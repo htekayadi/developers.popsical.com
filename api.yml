@@ -142,6 +142,10 @@ paths:
         You must notify user to go to the verification_url to activate this token.
       tags:
         - Auth
+      parameters:
+        - name: client_id
+          in: query
+          required: true
       responses:
         200:
           description: Token Object. Short code to display on the TV
