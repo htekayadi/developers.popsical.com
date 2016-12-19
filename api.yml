@@ -119,8 +119,8 @@ securityDefinitions:
   OauthSecurity:
     type: oauth2
     flow: accessCode
-    authorizationUrl: 'https://api.popsical.tv/oauth/authorize'
-    tokenUrl: 'https://api.popsical.tv/oauth/token'
+    authorizationUrl: 'https://api-staging.popsical.tv/oauth/authorize'
+    tokenUrl: 'https://api-staging.popsical.tv/oauth/token'
     scopes:
       public: "all public access"
       manage: "user resources"
