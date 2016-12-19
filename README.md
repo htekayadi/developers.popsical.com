@@ -1,5 +1,7 @@
 # Popsical API Doc
 
+http://developers.popsical.com
+
 `/dist` - swagger-ui fetches http://developers.popsical.com/api.json
 
 ## Developers
