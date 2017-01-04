@@ -1237,8 +1237,8 @@ paths:
         200:
           description: Returns json object
           schema:
+            type: object
             properties:
-              type: object
               version_name:
                 type: string
               version_code:
