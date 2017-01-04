@@ -146,6 +146,7 @@ paths:
         - name: client_id
           in: query
           required: true
+          type: string
       responses:
         200:
           description: Token Object. Short code to display on the TV

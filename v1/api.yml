@@ -146,6 +146,7 @@ paths:
         - name: client_id
           in: query
           required: true
+          type: string
       responses:
         200:
           description: Token Object. Short code to display on the TV
@@ -1234,17 +1235,17 @@ paths:
         - System
       responses:
         200:
-          description:
+          description: Returns json object
           schema:
-            type: object
-            version_name:
-              type: string
-            version_code:
-              type: integer
-            url:
-              type: string
-              description: Signed url for download. Expires after 30 minutes.
-
+            properties:
+              type: object
+              version_name:
+                type: string
+              version_code:
+                type: integer
+              url:
+                type: string
+                description: Signed url for download. Expires after 30 minutes.
 
 definitions:
   AuthToken:
