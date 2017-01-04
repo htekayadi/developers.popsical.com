@@ -1225,6 +1225,27 @@ paths:
             application/json:
               {"en":{"direction":"ltr","native_name":"English","name":{"en":"English","ja":"英語","es":"Inglés","fr":"Anglais","zh":"英语","zt":"英語"}},"zh":{"direction":"ltr","native_name":"简体中文","name":{"en":"Chinese(简体)","ja":"中国語（簡体字）","es":"Chino Simplificado","fr":"Chinois(简体)","zh":"简体中文","zt":"簡體中文"}},"ms":{"direction":"ltr","native_name":"Bahasa Melayu","name":{"en":"Malay","ja":"マレー語","es":"Malayo","fr":"Malais","zh":"马来语","zt":"馬來語"}},"id":{"direction":"ltr","native_name":"BahasaIndonesia","name":{"en":"Indonesian","ja":"インドネシア語","es":"Indonesio","fr":"Indonésien","zh":"印尼语","zt":"印度尼西亞語"}}}
 
+  /app_version.json:
+    get:
+      summary: Get latest version code & number of the TV app
+      description: |
+        TV device clients can check if user has the latest version of the api
+      tags:
+        - System
+      responses:
+        200:
+          description:
+          schema:
+            type: object
+            version_name:
+              type: string
+            version_code:
+              type: integer
+            url:
+              type: string
+              description: Signed url for download. Expires after 30 minutes.
+
+
 definitions:
   AuthToken:
     type: object

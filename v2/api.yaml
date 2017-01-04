@@ -3,13 +3,13 @@
 swagger: '2.0'
 info:
   title: Popsical API
-  version: "1"
+  version: "2"
 
   description: |
     Version 1
     --
 
-    all endpoints path must be prefixed with `/v1`
+    all endpoints path must be prefixed with `/v2`
 
     e.g https://api.popsical.tv/v1/genres.json
 
@@ -113,7 +113,7 @@ schemes:
   - https
 
 # will be prefixed to all paths
-basePath: /v1
+basePath: /v2
 
 securityDefinitions:
   OauthSecurity:
