@@ -1228,11 +1228,16 @@ paths:
 
   /app_version.json:
     get:
-      summary: Get latest version code & number of the TV app
+      summary: Get latest version code & number of the client_id app
       description: |
         TV device clients can check if user has the latest version of the api
       tags:
         - System
+      parameters:
+        - name: client_id
+          in: query
+          required: true
+          type: string
       responses:
         200:
           description: Returns json object
@@ -1246,6 +1251,8 @@ paths:
               url:
                 type: string
                 description: Signed url for download. Expires after 30 minutes.
+              created_at:
+                type: date-time
 
 definitions:
   AuthToken:
