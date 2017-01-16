@@ -1228,7 +1228,7 @@ paths:
     get:
       summary: Get latest version code & number of the client_id app
       description: |
-        TV device clients can check if user has the latest version of the api
+        Device clients can check if user has the latest version of the app
       tags:
         - System
       parameters:
@@ -1374,6 +1374,9 @@ definitions:
         type: string
       os_version:
         type: string
+      type:
+        type: string
+        description: valid values e.g tv, remote
 
   DevicePost:
     type: object
