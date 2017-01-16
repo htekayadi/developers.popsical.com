@@ -1148,6 +1148,14 @@ paths:
               client_id:
                 type: string
                 description: OAuth client_id key
+        - name: Authorization
+          in: header
+          description: |
+            (Optional) Provide access_token when user logged in email/password or fb
+            to properly linked signed in user to TV app
+          type: string
+          required: false
+          format: string
       responses:
         200:
           description: custom access token with tv app ip_address & port
