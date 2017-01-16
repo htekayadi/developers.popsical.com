@@ -1127,7 +1127,10 @@ paths:
       summary: Authorize TV App <-> Mobile App Link
       description: |
         To link the remote app with the TV use the short_code returned by GET `/v1/play_queue/token.json`
-        along with other required parameters in POST body
+        along with other required parameters in POST body.
+
+        (Optional) Provide 'Authorization' with access_token value in header for mobile clients logged_in via facebook or email.
+        This will ensure logged_in fb user session is maintain through out session
       tags:
         - PlayQueue
       parameters:
