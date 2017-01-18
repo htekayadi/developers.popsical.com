@@ -1465,6 +1465,9 @@ definitions:
       block:
         type: boolean
         description: true indicates track video can't be viewed due to Rules
+      premium:
+        type: boolean
+        description: indicates the track is marked as premium content
 
   Image:
     type: object
