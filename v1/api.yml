@@ -1448,6 +1448,9 @@ definitions:
         type: array
         items:
           type: string
+      source:
+        type: string
+        description: source of recording    
       images:
         $ref: '#/definitions/Image'
       musixmatch_id:
