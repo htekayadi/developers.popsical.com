@@ -268,7 +268,7 @@ paths:
           schema:
             $ref: '#/definitions/AccessToken'
 
-  /user.json:
+  /users.json:
     post:
       summary: Create User
       description: |
@@ -1448,6 +1448,9 @@ definitions:
         type: array
         items:
           type: string
+      source:
+        type: string
+        description: source of recording    
       images:
         $ref: '#/definitions/Image'
       musixmatch_id:
