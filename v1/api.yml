@@ -268,7 +268,7 @@ paths:
           schema:
             $ref: '#/definitions/AccessToken'
 
-  /user.json:
+  /users.json:
     post:
       summary: Create User
       description: |
