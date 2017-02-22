@@ -885,6 +885,58 @@ paths:
           description: Object with tracks array & meta pagination information
           schema:
             $ref: '#/definitions/Track'
+  
+  /tracks/request.json:
+    post:
+      summary: Create Track Request
+      description: |
+        Create a track request to be added in track list 
+      tags:
+        - Track Request
+      security:
+        - OauthSecurity:
+          - public
+          - remote_mode
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: object
+                properties:
+                  name:
+                    type: integer
+              title:
+                type: object
+                properties:
+                  name:
+                    type: string
+              artist_name:
+                type: object
+                properties:
+                  name:
+                    type: string 
+              sample_link:
+                type: object
+                properties:
+                  name:
+                    type: string            
+      responses:
+        200:
+          description: Track Request created
+          examples:
+            application/json:
+              {"success": "ok"}
+        422:
+          description: Model validation error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              {"error": "not_found", "err_code": 1407 }
 
   /me/play_queue.json:
     get:
