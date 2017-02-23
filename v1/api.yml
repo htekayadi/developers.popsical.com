@@ -904,26 +904,12 @@ paths:
           schema:
             type: object
             properties:
-              user_id:
-                type: object
-                properties:
-                  name:
-                    type: integer
               title:
-                type: object
-                properties:
-                  name:
-                    type: string
+                type: string
               artist_name:
-                type: object
-                properties:
-                  name:
-                    type: string 
+                type: string
               sample_link:
-                type: object
-                properties:
-                  name:
-                    type: string            
+                type: string          
       responses:
         200:
           description: Track Request created
