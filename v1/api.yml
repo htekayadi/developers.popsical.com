@@ -202,6 +202,7 @@ paths:
                 "first_name": "Jon",
                 "last_name": "Snow",
                 "profile_pic": "path/to/photo.jpg|png|gif",
+                "premium": true,
                 "profiles": [
                   {
                     "id": 1,
@@ -229,21 +230,21 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "Not Authorized", "err_code": 1401 }
+              {"errors": "Not Authorized", "err_code": 1401 }
         403:
           description: Forbidden
           schema:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "Forbidden", "err_code": 1403 }
+              {"errors": "Forbidden", "err_code": 1403 }
         404:
           description: Not found
           schema:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "Forbidden", "err_code": 1404 }
+              {"errors": "Forbidden", "err_code": 1404 }
 
   /auth/sessions.json:
     post:
@@ -308,7 +309,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "not_found", "err_code": 1407 }
+              {"errors": "not_found", "err_code": 1407 }
 
   /me/devices.json:
     post:
@@ -340,14 +341,14 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "not_found", "err_code": 1404 }
+              {"errors": "not_found", "err_code": 1404 }
         422:
           description: Model validation error
           schema:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "not_found", "err_code": 1407 }
+              {"errors": "not_found", "err_code": 1407 }
 
   /playlists.json:
     get:
@@ -436,7 +437,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "not_found", "err_code": 1404 }
+              {"errors": "not_found", "err_code": 1404 }
 
   /profiles/{id}.json:
     get:
@@ -477,7 +478,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "not_found", "err_code": 1404 }
+              {"errors": "not_found", "err_code": 1404 }
 
     delete:
       summary: Delete Profile
@@ -508,7 +509,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "validation error", "err_code": 1407 }
+              {"errors": "validation error", "err_code": 1407 }
 
     patch:
       summary: Update Profile
@@ -550,7 +551,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "validation error", "err_code": 1407 }
+              {"errors": "validation error", "err_code": 1407 }
 
 
   /profiles/{profile_id}/playlists.json:
@@ -696,7 +697,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "not_found", "err_code": 1404 }
+              {"errors": "not_found", "err_code": 1404 }
 
     post:
       summary: Create Profile
@@ -734,7 +735,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "validation error", "err_code": 1407 }
+              {"errors": "validation error", "err_code": 1407 }
 
 
   /genres/{genre}.json:
@@ -936,7 +937,7 @@ paths:
             $ref: '#/definitions/Error'
           examples:
             application/json:
-              {"error": "not_found", "err_code": 1407 }
+              {"errors": "not_found", "err_code": 1407 }
 
   /me/play_queue.json:
     get:
@@ -1669,7 +1670,7 @@ definitions:
   Error:
     type: object
     properties:
-      error:
+      errors:
         type: string
         description: Not authorized
       err_code:
