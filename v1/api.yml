@@ -1268,7 +1268,7 @@ paths:
               created_at:
                 type: string
                 format: date-time
-  /play/event.json:
+  /events/play.json:
     post:
       summary: Tracking video play event
       description: |
