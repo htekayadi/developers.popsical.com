@@ -1318,6 +1318,29 @@ paths:
               created_at:
                 type: string
                 format: date-time
+  /play/event.json:
+    post:
+      summary: Tracking video play event
+      description: |
+        Client must post this on every video start once
+      tags:
+        - Event
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              track_id:
+                type: integer
+              playlist_id:
+                type: integer
+      responses:
+        200:
+          description: |
+            Returns OK {'success': 'ok'}
+
 
 definitions:
   AuthToken:
