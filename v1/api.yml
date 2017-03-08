@@ -299,20 +299,54 @@ paths:
           examples:
             application/json:
               {"success": "ok"}
+        403:
+          description: User forbidden
+          schema:
+            $ref: '#/definitions/ErrorForbidden'
         404:
           description: User not found
           schema:
-            $ref: '#/definitions/Error'
-          examples:
-            application/json:
-              {"errors": "not_found", "err_code": 1404 }
+            $ref: '#/definitions/ErrorNotFound'
         422:
           description: Model validation error
           schema:
-            $ref: '#/definitions/Error'
+            $ref: '#/definitions/ErrorUnprocessable'
+    
+    patch: 
+      summary: Update Device
+      description: |
+        Update device parameter
+      tags:
+        - User
+        - Device
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/DevicePost'
+      security:
+        - OauthSecurity:
+          - manage
+          - remote_mode
+      responses:
+        200:
+          description: OAuth Access Token
           examples:
             application/json:
-              {"errors": "not_found", "err_code": 1407 }
+              {"success": "ok"}
+        403:
+          description: User forbidden
+          schema:
+            $ref: '#/definitions/ErrorForbidden'
+        404:
+          description: User not found
+          schema:
+            $ref: '#/definitions/ErrorNotFound'
+        422:
+          description: Model validation error
+          schema:
+            $ref: '#/definitions/ErrorUnprocessable'
 
   /playlists.json:
     get:
@@ -1433,6 +1467,9 @@ definitions:
       ip_address:
         type: string
         example: 192.168.1.1
+      mac_address:
+        type: string
+        example: f2:b7:2a:5d:bf:1d
       port:
         type: integer
         example: 8080
@@ -1679,6 +1716,42 @@ definitions:
       err_code:
         type: integer
         description: refer to internal error codes
+
+  ErrorForbidden:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Forbidden
+        example: forbidden
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1403
+          
+  ErrorNotFound:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Not authorized
+        example: not_found
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1404
+  
+  ErrorUnprocessable:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Model validation error
+        example: not_found
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1407
 
 # define reusable parameters:
 parameters:
