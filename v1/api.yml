@@ -347,6 +347,87 @@ paths:
           description: Model validation error
           schema:
             $ref: '#/definitions/ErrorUnprocessable'
+  
+  /artists.json:
+    get:
+      summary: Get Artists
+      description: |
+        Fetch array of artist objects
+      tags:
+        - Artist
+      parameters:
+        - $ref: '#/parameters/perPageParams'
+        - $ref: '#/parameters/pageParams'
+      security:
+        - OauthSecurity:
+          - manage
+          - remote_mode
+      responses:
+        200:
+          description: Object with artists array & meta pagination information
+          schema:
+            type: object
+            properties:
+              artists:
+                type: array
+                items:
+                  $ref: '#/definitions/Artist'
+              meta:
+                $ref: '#/definitions/Pagination'
+        403:
+          description: User forbidden
+          schema:
+            $ref: '#/definitions/ErrorForbidden'
+        422:
+          description: Model validation error
+          schema:
+            $ref: '#/definitions/ErrorUnprocessable'
+    
+  /artists/{id}.json:
+    get:
+      summary: Get Artist Object
+      description: |
+        Fetch artist object
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      tags:
+        - Artist
+      security:
+        - OauthSecurity:
+          - public
+      responses:
+        200:
+          description: Artits with playlist & meta pagination information
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 1
+              name:
+                type: string
+                example: Eminem
+              gender:
+                type: string
+                example: m
+              lang_codes:
+                type: array
+                items:
+                  type: string
+                  description: artist can have more than 1 language codes e.g 'en', 'zh'
+                  example: en
+              images:
+                $ref: '#/definitions/Image'
+              musixmatch_id:
+                type: integer
+                example: 1
+              playlists:
+                type: array
+                items:
+                  $ref: '#/definitions/Playlist'  
 
   /playlists.json:
     get:
@@ -1122,6 +1203,54 @@ paths:
           examples:
             application/json:
               { "success": "ok"}
+  
+  /me/play_queue/add_next.json:
+    post:
+      summary: Add track to the next position of current track
+      tags:
+        - PlayQueue
+      security:
+          - OauthSecurity:
+            - manage
+      parameters:
+          - name: body
+            in: body
+            schema:
+              type: object
+              properties:
+                track_id:
+                  type: integer
+                  example: 1
+      responses:
+        200:
+          description: returns ok
+          examples:
+            application/json:
+              { "success": "ok"}
+
+  /me/play_queue/set_next.json:
+    patch:
+      summary: Update track to the next position of current track
+      tags:
+        - PlayQueue
+      security:
+          - OauthSecurity:
+            - manage
+      parameters:
+          - name: body
+            in: body
+            schema:
+              type: object
+              properties:
+                play_queue_track_id:
+                  type: integer
+                  example: 1
+      responses:
+        200:
+          description: returns ok
+          examples:
+            application/json:
+              { "success": "ok"}
 
   /play_queue/token.json:
     get:
@@ -1574,6 +1703,7 @@ definitions:
           url:
             type: string
             description: url of the image.
+            example: https://charaku.imgix.net/defaults/artist.jpg?auto=compress,enhance
 
   Video:
     type: object
@@ -1608,19 +1738,24 @@ definitions:
     properties:
       id:
         type: integer
+        example: 1
       name:
         type: string
+        example: Eminem
       gender:
         type: string
+        example: m
       lang_codes:
         type: array
         items:
           type: string
           description: artist can have more than 1 language codes e.g 'en', 'zh'
+          example: en
       images:
         $ref: '#/definitions/Image'
       musixmatch_id:
         type: integer
+        example: 1
 
   PlayQueue:
     type: object
