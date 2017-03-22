@@ -14,9 +14,10 @@ task :cp do
   `cp v1/api.json dist/v1/api.json`
 end
 
-desc "build static assets"
-task build: [:gen, :cp]
+desc "deploy to s3"
+task :publish do
+  system 's3_website push --force'
+end
 
-# TODO release to s3
-# run gen[v1], gen[v2]
-# copy v1/api.json to dist/v1/api.json
+desc "build static assets"
+task build: [:gen, :cp, :publish]

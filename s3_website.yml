@@ -1,0 +1,22 @@
+# These variables are project specific, credentials are never stored.
+s3_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+s3_secret: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+s3_bucket: developers.popsical.com
+s3_endpoint: ap-southeast-1
+site: ./dist/
+
+# Below are examples of all the available configurations.
+# See https://github.com/laurilehmijoki/s3_website for more detailed info.
+
+gzip: true
+
+max_age:
+  "*": 6000
+
+exclude_from_upload:
+  - Gemfile
+  - Gemfile.lock
+  - Guardfile
+  - Rakefile
+  - .gitignore
+  - .git
