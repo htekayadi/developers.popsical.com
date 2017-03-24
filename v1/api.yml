@@ -259,7 +259,7 @@ paths:
           description: Success
           schema: 
             $ref: '#/definitions/Success'
-        404:
+        422:
           description: User not found
           schema:
             $ref: '#/definitions/ErrorNotFound'
@@ -1903,7 +1903,7 @@ definitions:
     properties:
       errors:
         type: string
-        description: Not authorized
+        description: Not found
         example: not found
       err_code:
         type: integer
