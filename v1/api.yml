@@ -237,6 +237,33 @@ paths:
             application/json:
               {"errors": "not_found", "err_code": 1407 }
 
+  /users/forgot_password.json:
+    post:
+      summary: Request reset password
+      description: |
+        Request reset password instruction to be sent to email
+      tags:
+        - User
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                example: jonsnow@mail.com
+      responses:
+        200:
+          description: Success
+          schema: 
+            $ref: '#/definitions/Success'
+        404:
+          description: User not found
+          schema:
+            $ref: '#/definitions/ErrorNotFound'
+
   /me.json:
     get:
       summary: Fetch User Info
@@ -1841,7 +1868,14 @@ definitions:
           per_page:
             type: integer
             description: Number of items available per page
-
+  
+  Success:
+    type: object
+    properties:
+      success:
+        type: string
+        description: Success
+        example: ok
   Error:
     type: object
     properties:
@@ -1870,7 +1904,7 @@ definitions:
       errors:
         type: string
         description: Not authorized
-        example: not_found
+        example: not found
       err_code:
         type: integer
         description: refer to internal error codes
@@ -1882,7 +1916,7 @@ definitions:
       errors:
         type: string
         description: Model validation error
-        example: not_found
+        example: not found
       err_code:
         type: integer
         description: refer to internal error codes
