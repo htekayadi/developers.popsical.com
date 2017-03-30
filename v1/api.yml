@@ -171,6 +171,68 @@ paths:
           description: OAuth Access Token
           schema:
             $ref: '#/definitions/AccessToken'
+  
+  /oauth/token:
+    post:
+      summary: Fetch new generated access token
+      description: |
+        Exceptional for this endpoint, no need to add prefix /v1. 
+        Example endpoint: https://app.popsical.tv/oauth/token
+      tags:
+        - Auth
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              refresh_token:
+                type: string
+                description: Token used to generate new access token
+                example: ead4abe579f31c8819383d54c68e226aa8d3331a5c64e321669a1fcd9de8055e
+              grant_type:
+                type: string
+                description: Grand request type
+                example: refresh_token
+              client_id:
+                type: string
+                description: Your app oauth client id
+                example: 7eb4494c1eb42584b91cd81b506e4d2fd09ae75a69307c0ecc9c3f6a5a88c228  
+              client_secret:
+                type: string
+                description: Your app oauth client secret
+                example: e9af1b1d1c23ab8f686a61ab35ef8541e2615a37b63c68a1827219d07c5e6af7
+      responses:
+        200:
+          description: OAuth Access Token
+          schema:
+            type: object
+            properties:
+              access_token:
+                type: string
+                description: Include this in header -H Authorization Bearer access_token
+                example: e9d9054a3b303a5fdf9a175ed18d9296535ca4e34159c50edebca681b117f152
+              refresh_token:
+                type: string
+                description: Use refresh token when access_token has expired
+                example: 649f6471f13f020f7ae31a43fbf443d5d64d21fa8290f16a868f4001fb837061
+              expires_in:
+                type: integer
+                description: expiry time of access token in second
+                example: 14400
+              scope:
+                type: string
+                description: Scope allowed accessing resources
+                example: public manage
+              token_type:
+                type: string
+                description: Token type
+                example: bearer
+              created_at:
+                type: integer
+                description: Date of creation in timemillis
+                example: 1490868198
 
   /auth/sessions.json:
     post:
