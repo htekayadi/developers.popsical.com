@@ -177,7 +177,7 @@ paths:
       summary: Fetch new generated access token
       description: |
         Exceptional for this endpoint, no need to add prefix /v1. 
-        Example endpoint: https://app.popsical.tv/oauth/token
+        Example endpoint: https://api.popsical.tv/oauth/token
       tags:
         - Auth
       parameters:
