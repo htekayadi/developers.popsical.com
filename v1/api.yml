@@ -1668,7 +1668,9 @@ definitions:
         type: boolean
         example: true  
       profiles:
-        $ref: '#/definitions/Profile'
+        type: array
+        items:
+          $ref: '#/definitions/Profile'
       devices:
         type: array
         items:
@@ -1692,7 +1694,7 @@ definitions:
         description: History playlist id
         example: 1  
       urls:
-        type: string
+        type: object
         properties:
           playlists:
             type: string
