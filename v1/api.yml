@@ -1163,6 +1163,25 @@ paths:
               playlist_id:
                 type: integer
 
+  /me/play_queue/previous.json:
+    get:
+      summary: Get previous play queue tracks
+      description: |
+        Only returns the previous tracks in the play queue json array object
+      parameters:
+        - $ref: '#/parameters/pageParams'
+        - $ref: '#/parameters/perPageParams'
+      security:
+        - OauthSecurity:
+          - public
+      tags:
+        - PlayQueue
+      responses:
+        200:
+          description: Current object
+          schema:
+            $ref: '#/definitions/PrevPlayQueueObj'
+
   /me/play_queue/tracks.json:
     post:
       summary: Add priority track(s) to the play queue
@@ -1668,6 +1687,10 @@ definitions:
         type: integer
         description: User has 1 default playlist id
         example: 9
+      history_playlist_id:
+        type: integer
+        description: History playlist id
+        example: 1  
       urls:
         type: string
         properties:
@@ -1911,6 +1934,32 @@ definitions:
           profile_pic:
             type: string
             description: url of image
+  
+  PrevPlayQueueObj:
+    type: object
+    properties:
+      prev:
+        type: array
+        items:
+          $ref: '#/definitions/PlayQueueObj'
+      meta:
+        type: object
+        properties:
+          total_forward:
+            type: integer
+            description: Total number of next items
+          total:
+            type: integer
+            description: Total number of items
+          current_page:
+            type: integer
+            description: Current page
+          num_pages:
+            type: integer
+            description: Total of number of pages available to paginate
+          per_page:
+            type: integer
+            description: Number of items available per page
 
   Pagination:
     type: object
