@@ -171,12 +171,12 @@ paths:
           description: OAuth Access Token
           schema:
             $ref: '#/definitions/AccessToken'
-  
+
   /oauth/token:
     post:
       summary: Fetch new generated access token
       description: |
-        Exceptional for this endpoint, no need to add prefix /v1. 
+        Exceptional for this endpoint, no need to add prefix /v1.
         Example endpoint: https://api.popsical.tv/oauth/token
       tags:
         - Auth
@@ -198,7 +198,7 @@ paths:
               client_id:
                 type: string
                 description: Your app oauth client id
-                example: 7eb4494c1eb42584b91cd81b506e4d2fd09ae75a69307c0ecc9c3f6a5a88c228  
+                example: 7eb4494c1eb42584b91cd81b506e4d2fd09ae75a69307c0ecc9c3f6a5a88c228
               client_secret:
                 type: string
                 description: Your app oauth client secret
@@ -319,7 +319,7 @@ paths:
       responses:
         200:
           description: Success
-          schema: 
+          schema:
             $ref: '#/definitions/Success'
         422:
           description: User not found
@@ -400,8 +400,8 @@ paths:
           description: Model validation error
           schema:
             $ref: '#/definitions/ErrorUnprocessable'
-    
-    patch: 
+
+    patch:
       summary: Update Device
       description: |
         Update device parameter
@@ -436,7 +436,7 @@ paths:
           description: Model validation error
           schema:
             $ref: '#/definitions/ErrorUnprocessable'
-  
+
   /artists.json:
     get:
       summary: Get Artists
@@ -471,7 +471,7 @@ paths:
           description: Model validation error
           schema:
             $ref: '#/definitions/ErrorUnprocessable'
-    
+
   /artists/{id}.json:
     get:
       summary: Get Artist Object
@@ -516,7 +516,7 @@ paths:
               playlists:
                 type: array
                 items:
-                  $ref: '#/definitions/Playlist'  
+                  $ref: '#/definitions/Playlist'
 
   /playlists.json:
     get:
@@ -1054,12 +1054,12 @@ paths:
           description: Object with tracks array & meta pagination information
           schema:
             $ref: '#/definitions/Track'
-  
+
   /tracks/request.json:
     post:
       summary: Create Track Request
       description: |
-        Create a track request to be added in track list 
+        Create a track request to be added in track list
       tags:
         - Track Request
       security:
@@ -1078,7 +1078,7 @@ paths:
               artist_name:
                 type: string
               sample_link:
-                type: string          
+                type: string
       responses:
         200:
           description: Track Request created
@@ -1311,7 +1311,7 @@ paths:
           examples:
             application/json:
               { "success": "ok"}
-  
+
   /me/play_queue/add_next.json:
     post:
       summary: Add track to the next position of current track
@@ -1448,6 +1448,10 @@ paths:
                   "tv_ip_address": "192.168.1.1",
                   "tv_port": 8080
               }
+        401:
+          description: Not Authorize
+          schema:
+            $ref: '#/definitions/ErrorUnauthorized'
 
   /play_queue/devices.json:
     get:
@@ -1666,7 +1670,7 @@ definitions:
         example: https://img/700b.jpg
       premium:
         type: boolean
-        example: true  
+        example: true
       profiles:
         type: array
         items:
@@ -1692,7 +1696,7 @@ definitions:
       history_playlist_id:
         type: integer
         description: History playlist id
-        example: 1  
+        example: 1
       urls:
         type: object
         properties:
@@ -1786,7 +1790,7 @@ definitions:
           type: string
       source:
         type: string
-        description: source of recording    
+        description: source of recording
       images:
         $ref: '#/definitions/Image'
       musixmatch_id:
@@ -1936,7 +1940,7 @@ definitions:
           profile_pic:
             type: string
             description: url of image
-  
+
   PrevPlayQueueObj:
     type: object
     properties:
@@ -1981,7 +1985,7 @@ definitions:
           per_page:
             type: integer
             description: Number of items available per page
-  
+
   Success:
     type: object
     properties:
@@ -1999,6 +2003,18 @@ definitions:
         type: integer
         description: refer to internal error codes
 
+  ErrorUnauthorized:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Not authorized
+        example: Not authorized
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1401
+
   ErrorForbidden:
     type: object
     properties:
@@ -2010,7 +2026,7 @@ definitions:
         type: integer
         description: refer to internal error codes
         example: 1403
-          
+
   ErrorNotFound:
     type: object
     properties:
@@ -2022,7 +2038,7 @@ definitions:
         type: integer
         description: refer to internal error codes
         example: 1404
-  
+
   ErrorUnprocessable:
     type: object
     properties:
