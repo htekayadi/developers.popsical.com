@@ -1233,6 +1233,7 @@ paths:
       tags:
         - PlayQueue
       parameters:
+        - $ref: '#/parameters/includeBodyParams'
         - name: body
           in: body
           schema:
@@ -2089,3 +2090,9 @@ parameters:
     description: valid values e.g 'm', 'f', 'mixed'
     required: false
     type: string
+  includeBodyParams:
+    name: include_body
+    in: query
+    description: Return play_queue body in response
+    type: boolean
+    required: false
