@@ -1097,7 +1097,33 @@ paths:
     post:
       summary: Create Track Report
       description: |
-        Create a track report
+        Reason example:
+
+        -Vocals too soft
+
+        -Music too loud
+
+        -No vocals
+
+        -No music
+
+        -No sound at all
+
+        -Vocals and music out of sync
+
+        -Channel 1 and 2 are exactly the same
+
+        -Video keeps lagging severely
+
+        -Song title is incorrect or corrupted
+
+        -Two songs are playing simultaneously
+
+        -Video content is too violent
+
+        -Video content is too sexual
+
+        -Video content is incorrect
       tags:
         - Track Report
       security:
@@ -1111,14 +1137,18 @@ paths:
           schema:
             type: object
             properties:
+              track_id:
+                type: integer
+                example: 1
               reason:
                 type: string
-              ip_address:
-                type: string
+                example: Vocals too soft
               device_uid:
                 type: string
+                example: b540e4fd7fcf00b1
               device_type:
                 type: string
+                example: remote
       responses:
         200:
           description: Track Report created
