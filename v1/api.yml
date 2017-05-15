@@ -1093,6 +1093,46 @@ paths:
             application/json:
               {"errors": "not_found", "err_code": 1407 }
 
+  /tracks/report.json:
+    post:
+      summary: Create Track Report
+      description: |
+        Create a track report
+      tags:
+        - Track Report
+      security:
+        - OauthSecurity:
+          - public
+          - remote_mode
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              reason:
+                type: string
+              ip_address:
+                type: string
+              device_uid:
+                type: string
+              device_type:
+                type: string
+      responses:
+        200:
+          description: Track Report created
+          examples:
+            application/json:
+              {"success": "ok"}
+        422:
+          description: Model validation error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              {"errors": "not_found", "err_code": 1407 }
+
   /me/play_queue.json:
     get:
       summary: Get Play Queue
@@ -1515,6 +1555,37 @@ paths:
           examples:
             application/json:
               {"en":{"direction":"ltr","native_name":"English","name":{"en":"English","ja":"英語","es":"Inglés","fr":"Anglais","zh":"英语","zt":"英語"}},"zh":{"direction":"ltr","native_name":"简体中文","name":{"en":"Chinese(简体)","ja":"中国語（簡体字）","es":"Chino Simplificado","fr":"Chinois(简体)","zh":"简体中文","zt":"簡體中文"}},"ms":{"direction":"ltr","native_name":"Bahasa Melayu","name":{"en":"Malay","ja":"マレー語","es":"Malayo","fr":"Malais","zh":"马来语","zt":"馬來語"}},"id":{"direction":"ltr","native_name":"BahasaIndonesia","name":{"en":"Indonesian","ja":"インドネシア語","es":"Indonesio","fr":"Indonésien","zh":"印尼语","zt":"印度尼西亞語"}}}
+
+  /subscriptions/status.json:
+    get:
+      summary: Fetch subscription status
+      description: |
+        Fetch subscription status
+      tags:
+        - Subscription
+      security:
+        - OauthSecurity:
+          - public
+          - remote_mode
+      responses:
+        200:
+          description: Object with subscription status information
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: "Active"
+              plan:
+                type: string
+                example: "Popsical Premium"
+              premium:
+                type: boolean
+                example: true
+        401:
+          description: User unauthorized
+          schema:
+            $ref: '#/definitions/ErrorUnauthorized'
 
   /app_version.json:
     get:
