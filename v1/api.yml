@@ -2002,6 +2002,9 @@ definitions:
       playlist_id:
         type: integer
         description: playlist id which the tracks belong to.
+      play_queue_id:
+        type: integer
+        description: user's play queue id
       total_forward:
         type: integer
         description: total number of items to be played next (excluding previous played items)
