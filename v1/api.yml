@@ -1667,7 +1667,30 @@ paths:
         200:
           description: |
             Returns OK {'success': 'ok'}
-
+  /events/stop.json:
+    post:
+      summary: Tracking video stop event
+      description: |
+        Client must post this on every video stop once
+      tags:
+        - Event
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              track_id:
+                type: integer
+              playlist_id:
+                type: integer
+              play_duration:
+                type: integer
+      responses:
+        200:
+          description: |
+            Returns OK {'success': 'ok'}
 
 definitions:
   AuthToken:
