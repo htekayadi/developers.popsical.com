@@ -1254,9 +1254,9 @@ paths:
 
   /me/play_queue/tracks.json:
     post:
-      summary: Add priority track(s) to the play queue
+      summary: Add track(s) to the play queue
       description: |
-        Add priority tracks to play queue
+        Add tracks to play queue
       security:
         - OauthSecurity:
           - manage
