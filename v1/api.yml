@@ -1099,31 +1099,31 @@ paths:
       description: |
         Reason example:
 
-        -Vocals too soft
+        [1] Vocals too soft
 
-        -Music too loud
+        [2] Music too loud
 
-        -No vocals
+        [3] No vocals
 
-        -No music
+        [4] No music
 
-        -No sound at all
+        [5] No sound at all
 
-        -Vocals and music out of sync
+        [6] Vocals and music out of sync
 
-        -Channel 1 and 2 are exactly the same
+        [7] Channel 1 and 2 are exactly the same
 
-        -Video keeps lagging severely
+        [8] Video keeps lagging severely
 
-        -Song title is incorrect or corrupted
+        [9] Song title is incorrect or corrupted
 
-        -Two songs are playing simultaneously
+        [10] Two songs are playing simultaneously
 
-        -Video content is too violent
+        [11] Video content is too violent
 
-        -Video content is too sexual
+        [12] Video content is too sexual
 
-        -Video content is incorrect
+        [13] Video content is incorrect
       tags:
         - Track Report
       security:
@@ -1141,14 +1141,20 @@ paths:
                 type: integer
                 example: 1
               reason:
-                type: string
-                example: Vocals too soft
+                type: array
+                example: [1, 2, 3, 4]
               device_uid:
                 type: string
                 example: b540e4fd7fcf00b1
               device_type:
                 type: string
                 example: remote
+              correct_song_title:
+                type: string
+                example: Happy New Year
+              other_feedback:
+                type: string
+                example: No subtitle
       responses:
         200:
           description: Track Report created
