@@ -1844,8 +1844,8 @@ definitions:
         example: device-id
       device_token:
         type: string
-        description: unique token related to push notifucation
-        exmaple: abc123
+        description: unique token related to push notification
+        example: abc123
       ip_address:
         type: string
         example: 192.168.1.1
