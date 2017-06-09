@@ -1018,6 +1018,7 @@ paths:
       parameters:
         - $ref: '#/parameters/perPageParams'
         - $ref: '#/parameters/pageParams'
+        - $ref: '#/parameters/playlistGenreParams'
       security:
         - OauthSecurity:
           - public
@@ -1472,6 +1473,44 @@ paths:
                 "short_code": "QNHTPP",
                 "expires_in": 600
               }
+    delete:
+      summary: Unpair TV App <-> Mobile App Link
+      description: |
+        Delete token that links the remote app with the TV
+      tags:
+        - PlayQueue
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              device_id:
+                type: string
+                description: your unique mobile device id
+                example: D6DD92BA-232C-4A62-87F3-72601E847F88
+        - name: Authorization
+          in: header
+          description: |
+            Provide access_token when user logged in email/password or fb
+            to properly linked signed in user to TV app
+          type: string
+          required: false
+          format: string
+      responses:
+        200:
+          description: delete play queue token successfully
+          examples:
+            application/json:
+              {
+                "success": "ok"
+              }
+        204:
+          description: no applicable play queue token found
+          examples:
+            application/json:
+              {"success": "ok"}
 
   /play_queue/authorize.json:
     post:
@@ -2218,7 +2257,7 @@ parameters:
   playlistGenreParams:
     name: genres
     in: query
-    description: genres e.g `pop`, `duet`, `90s`, `80s`
+    description: genres e.g `pop`, `rock`, `rap`, `jazz`
     type: string
     required: false
   playlistArtistParams:
