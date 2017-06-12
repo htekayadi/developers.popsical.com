@@ -1604,6 +1604,115 @@ paths:
         Recommended usage:
 
         Treat this as a reference endpoint so you can call this once and store locally as a hash table
+
+        Examples:
+
+        ```
+        {
+         "pop":{
+            "name":{
+               "en":"Pop",
+               "zh":"流行",
+               "zt":"流行"
+            },
+            "position":0,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/pop.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_pop.png?auto=compress"
+         },
+         "rock":{
+            "name":{
+               "en":"Rock",
+               "zh":"摇滚",
+               "zt":"搖滾"
+            },
+            "position":1,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/rock.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_rock.png?auto=compress"
+         },
+         "r\u0026b":{
+            "name":{
+               "en":"R\u0026B",
+               "zh":"节奏蓝调",
+               "zt":"節奏藍調"
+            },
+            "position":2,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/R_B.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_r_n_b.png?auto=compress"
+         },
+         "country":{
+            "name":{
+               "en":"Country",
+               "zh":"乡村",
+               "zt":"鄉村"
+            },
+            "position":3,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/country.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_country.png?auto=compress"
+         },
+         "rap":{
+            "name":{
+               "en":"Rap",
+               "zh":"嘻哈",
+               "zt":"嘻哈"
+            },
+            "position":4,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/rap.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/rap.png?auto=compress"
+         },
+         "jazz":{
+            "name":{
+               "en":"Jazz",
+               "zh":"爵士乐",
+               "zt":"爵士樂"
+            },
+            "position":5,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/jazz.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/jazz.png?auto=compress"
+         },
+         "edm":{
+            "name":{
+               "en":"EDM",
+               "zh":"电子舞曲",
+               "zt":"電子舞曲"
+            },
+            "position":6,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/edm.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/edm.png?auto=compress"
+         },
+         "acoustic":{
+            "name":{
+               "en":"Acoustic",
+               "zh":"原音乐",
+               "zt":"原音樂"
+            },
+            "position":7,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/acoustic.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/acoustic.png?auto=compress"
+         },
+         "soundtrack":{
+            "name":{
+               "en":"Soundtrack",
+               "zh":"影视配乐",
+               "zt":"影視配樂"
+            },
+            "position":8,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/soundtrack.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/soundtrack.png?auto=compress"
+         },
+         "indie":{
+            "name":{
+               "en":"Indie",
+               "zh":"独立小品",
+               "zt":"獨立小品"
+            },
+            "position":9,
+            "poster_url":"https://charaku.imgix.net/defaults/genre_bg/indie.jpg?auto=compress",
+            "icon_url":"https://charaku.imgix.net/defaults/genre_icons/indie.png?auto=compress"
+         }
+        }
+        ```
+        ___
+
       tags:
         - Genre
         - Meta
@@ -1612,8 +1721,7 @@ paths:
           description: Object of genres available
           examples:
             application/json:
-              {"pop":{"name":{"en":"Pop","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/pop.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_pop.png"},"rock":{"name":{"en":"Rock","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/rock.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_rock.png"},"r\u0026b":{"name":{"en":"R\u0026B","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/R_B.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_r_n_b.png"},"country":{"name":{"en":"Country","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/country.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_country.png"},"rap":{"name":{"en":"Hip Hop","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/hip_hop.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_hip_hop.png"},"dance":{"name":{"en":"Dance","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/dance.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_dance.png"}}
-
+              {"pop":{"name":{"en":"Pop","zh":"流行","zt":"流行"},"position":0,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/pop.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_pop.png?auto=compress"},"rock":{"name":{"en":"Rock","zh":"摇滚","zt":"搖滾"},"position":1,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/rock.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_rock.png?auto=compress"},"r\u0026b":{"name":{"en":"R\u0026B","zh":"节奏蓝调","zt":"節奏藍調"},"position":2,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/R_B.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_r_n_b.png?auto=compress"},"country":{"name":{"en":"Country","zh":"乡村","zt":"鄉村"},"position":3,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/country.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_country.png?auto=compress"},"rap":{"name":{"en":"Rap","zh":"嘻哈","zt":"嘻哈"},"position":4,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/rap.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/rap.png?auto=compress"},"jazz":{"name":{"en":"Jazz","zh":"爵士乐","zt":"爵士樂"},"position":5,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/jazz.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/jazz.png?auto=compress"},"edm":{"name":{"en":"EDM","zh":"电子舞曲","zt":"電子舞曲"},"position":6,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/edm.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/edm.png?auto=compress"},"acoustic":{"name":{"en":"Acoustic","zh":"原音乐","zt":"原音樂"},"position":7,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/acoustic.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/acoustic.png?auto=compress"},"soundtrack":{"name":{"en":"Soundtrack","zh":"影视配乐","zt":"影視配樂"},"position":8,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/soundtrack.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/soundtrack.png?auto=compress"},"indie":{"name":{"en":"Indie","zh":"独立小品","zt":"獨立小品"},"position":9,"poster_url":"https://charaku.imgix.net/defaults/genre_bg/indie.jpg?auto=compress","icon_url":"https://charaku.imgix.net/defaults/genre_icons/indie.png?auto=compress"}}
   /top_languages.json:
     get:
       summary: Get available languages
