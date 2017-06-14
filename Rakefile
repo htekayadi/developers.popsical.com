@@ -15,8 +15,8 @@ end
 desc "copy v1/api.json to dist/v1"
 task :cp do
   puts "copying api.json to dist"
-  `cp v1/api.json dist/v1/api.json`
-  `cp v2/api.json dist/v2/api.json`
+  `cp v1/api.json dist_latest/v1/api.json`
+  `cp v2/api.json dist_latest/v2/api.json`
 end
 
 desc "deploy to s3"
