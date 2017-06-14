@@ -149,7 +149,7 @@ paths:
           schema:
             type: object
             properties:
-              playlists:
+              genres:
                 type: array
                 items:
                   $ref: '#/definitions/Genre'
