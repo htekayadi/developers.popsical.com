@@ -95,6 +95,8 @@ info:
 
     1412 - Track already exist in play queue.
 
+    1413 - TV Device ID is missing
+
     1500 - Internal server error
 
     Search
@@ -135,338 +137,55 @@ paths:
     get:
       summary: Lookup available genres
       description: |
-        Recommended usage:
-
-        Treat this as a reference endpoint so you can call this once and store locally as a hash table
+        Returns all valid genres in collection
       tags:
         - Genre
         - Meta
+      parameters:
+        - $ref: '#/parameters/playlistLangParams'
       responses:
         200:
-          description: Object of genres available
-          examples:
-            application/json:
-              {"pop":{"name":{"en":"Pop","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/pop.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_pop.png"},"rock":{"name":{"en":"Rock","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/rock.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_rock.png"},"r\u0026b":{"name":{"en":"R\u0026B","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/R_B.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_r_n_b.png"},"country":{"name":{"en":"Country","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/country.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_country.png"},"rap":{"name":{"en":"Hip Hop","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/hip_hop.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_hip_hop.png"},"dance":{"name":{"en":"Dance","zh":""},"poster_url":"https://charaku.imgix.net/defaults/genre_bg/dance.jpg","icon_url":"https://charaku.imgix.net/defaults/genre_icons/ic_dance.png"}}
+          description: Object with genres array & meta pagination information
+          schema:
+            type: object
+            properties:
+              playlists:
+                type: array
+                items:
+                  $ref: '#/definitions/Genre'
+              meta:
+                $ref: '#/definitions/Pagination'
 
 definitions:
-  AuthToken:
+  Genre:
     type: object
     properties:
-      short_code:
-        type: string
-        description: Short code to display on the TV
-      nonce:
-        type: string
-        description: Secure key to verify short code
-      verification_url:
-        type: string
-        description: Url for user to go to verify account & TV
-      expires_in:
-        type: integer
-        description: Value in seconds until auth token expires
-  AuthTokenPost:
-    type: object
-    properties:
-      short_code:
-        type: string
-        description: Short code displayed on TV
-      nonce:
-        type: string
-        description: Secure key to verify short code
-      device_id:
-        type: string
-        description: Your mobile android unique id
-      client_id:
-        type: string
-        description: Your app oauth client id
-  AuthTokenPostFB:
-    type: object
-    properties:
-      facebook_token:
-        type: string
-        description: Facebook token
-      device_id:
-        type: string
-        description: Your mobile android unique id
-      client_id:
-        type: string
-        description: Your app oauth client id
-      scope:
-        type: string
-        description: Oauth scope permission e.g public remote_mode
-  AccessToken:
-    type: object
-    properties:
-      access_token:
-        type: string
-        description: Include this in header -H Authorization Bearer access_token
-      refresh_token:
-        type: string
-        description: Use refresh token when access_token has expired
-      expires_in:
-        type: string
-        description: timestamp of access token expiry
-      scope:
-        type: string
-        description: Scope allowed accessing resources
-  AccessTokenTV:
-    title: AccessTokenTv
-    type: object
-    allOf:
-      - $ref: '#/definitions/AccessToken'
-      - properties:
-          tv_ip_address:
-            type: string
-          tv_port:
-            type: integer
-  User:
-    type: object
-    properties:
-      id:
-        type: integer
-      email:
-        type: string
-      first_name:
-        type: string
-      last_name:
-        type: string
-      profile_pic:
-        type: string
-      profiles:
-        $ref: '#/definitions/Profile'
-      devices:
-        type: array
-        items:
-          $ref: '#/definitions/Device'
-  Profile:
-    type: object
-    properties:
-      id:
-        type: integer
       name:
         type: string
-        description: profile name
-      playlist_id:
-        type: integer
-        description: User has 1 default playlist id
-      urls:
+        description: genre name
+        example: rock
+      poster_url:
         type: string
-        properties:
-          playlists:
-            type: string
-            description: user playlists url
-  Device:
-    type: object
-    properties:
-      device_uid:
+        description: poster URL
+        example: https://charaku.imgix.net/defaults/genre_bg/rock.jpg?auto=compress
+      icon_url:
         type: string
-        description: unique mobile device identifier
-      ip_address:
-        type: string
-      port:
-        type: integer
-      os:
-        type: string
-      os_version:
-        type: string
-
-  DevicePost:
-    type: object
-    properties:
-      device:
-        $ref: '#/definitions/Device'
-
-  Playlist:
-    type: object
-    properties:
-      id:
-        type: integer
-        description: identifier of playlist. Use this id to fetch playlist object
-      profile_id:
-        type: integer
-        description: profile_id 0 means internal generated id
-      created_at:
-        type: string
-        format: date-time
-        description: timestamp of creation in iso8601 timestamp format
-      updated_at:
-        type: string
-        format: date-time
-        description: timestamp of last updated in iso8601 timestamp format
-      position:
-        type: integer
-
-  Track:
-    type: object
-    properties:
-      id:
-        type: integer
-      number:
-        type: integer
-        description: track number in the album (if available)
-      title:
-        type: string
-        description: track title
-      alt_title:
-        type: string
-        description: alternate title, used for search index
-      lang_code:
-        type: string
-        description: language code of the track e.g en
-      runtime:
-        type: integer
-        description: duration in seconds
-      release_date:
-        type: string
-        format: date
-        description: track release date
-      has_video:
-        type: boolean
-        description: flag to indicate track has video
-      genres:
-        type: array
-        items:
-          type: string
-      images:
-        $ref: '#/definitions/Image'
-      musixmatch_id:
-        type: integer
-      musixmatch_lyrics_id:
-        type: integer
-      musixmatch_subtitle_id:
-        type: integer
-      video:
-        $ref: '#/definitions/Video'
-      artists:
-        type: array
-        items:
-          $ref: '#/definitions/Artist'
-      block:
-        type: boolean
-        description: true indicates track video can't be viewed due to Rules
-
-  Image:
-    type: object
-    properties:
-      poster:
+        example: https://charaku.imgix.net/defaults/genre_icons/ic_rock.png?auto=compress
+      genre_langs:
         type: object
         properties:
-          url:
+          en:
             type: string
-            description: url of the image.
-
-  Video:
-    type: object
-    properties:
-      id:
-        type: integer
-      artist_id:
-        type: integer
-      title:
-        type: string
-        description: video title
-      has_stream:
-        type: boolean
-        description: a flag to indicate whether video has encoded stream
-      images:
-        $ref: '#/definitions/Image'
-      dash:
-        type: object
-        properties:
-          p720:
+            description: genre lang code with genre name
+            example: Rock
+          zh:
             type: string
-            description: mpeg-dash url of the stream
-      hls:
-        type: object
-        properties:
-          p720:
+            description: genre lang code with genre name
+            example: 摇滚
+          zt:
             type: string
-            description: hls url of the tream
-
-  Artist:
-    type: object
-    properties:
-      id:
-        type: integer
-      name:
-        type: string
-      gender:
-        type: string
-      lang_codes:
-        type: array
-        items:
-          type: string
-          description: artist can have more than 1 language codes e.g 'en', 'zh'
-      images:
-        $ref: '#/definitions/Image'
-      musixmatch_id:
-        type: integer
-
-  PlayQueue:
-    type: object
-    properties:
-      user_id:
-        type: integer
-      updated_at:
-        type: string
-        format: date-time
-      current:
-        $ref: '#/definitions/PlayQueueObj'
-      prev:
-        type: array
-        items:
-          $ref: '#/definitions/PlayQueueObj'
-      next:
-        type: array
-        items:
-          $ref: '#/definitions/PlayQueueObj'
-      priority:
-        type: array
-        items:
-          $ref: '#/definitions/PlayQueueObj'
-      playlist_id:
-        type: integer
-        description: playlist id which the tracks belong to.
-      total_forward:
-        type: integer
-        description: total number of items to be played next (excluding previous played items)
-      total:
-        type: integer
-        description: total number of all items in the play queue
-      meta:
-        type: object
-        properties:
-          total:
-            type: integer
-            description: Total number of items
-          current_page:
-            type: integer
-            description: Current page
-          num_pages:
-            type: integer
-            description: Total of number of pages available to paginate
-          per_page:
-            type: integer
-            description: Number of items available per page
-
-  PlayQueueObj:
-    type: object
-    properties:
-      play_queue_track_id:
-        type: integer
-      track:
-        $ref: '#/definitions/Track'
-      position:
-        type: integer
-      added_by:
-        type: object
-        properties:
-          name:
-            type: string
-            description: name of user
-          profile_pic:
-            type: string
-            description: url of image
+            description: genre lang code with genre name
+            example: 搖滾
 
   Pagination:
     type: object
@@ -487,15 +206,70 @@ definitions:
             type: integer
             description: Number of items available per page
 
+  Success:
+    type: object
+    properties:
+      success:
+        type: string
+        description: Success
+        example: ok
   Error:
     type: object
     properties:
-      error:
+      errors:
         type: string
         description: Not authorized
       err_code:
         type: integer
         description: refer to internal error codes
+
+  ErrorUnauthorized:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Not authorized
+        example: Not authorized
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1401
+
+  ErrorForbidden:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Forbidden
+        example: forbidden
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1403
+
+  ErrorNotFound:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Not found
+        example: not found
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1404
+
+  ErrorUnprocessable:
+    type: object
+    properties:
+      errors:
+        type: string
+        description: Model validation error
+        example: not found
+      err_code:
+        type: integer
+        description: refer to internal error codes
+        example: 1407
 
 # define reusable parameters:
 parameters:
@@ -526,7 +300,7 @@ parameters:
   playlistGenreParams:
     name: genres
     in: query
-    description: genres e.g `pop`, `duet`, `90s`, `80s`
+    description: genres e.g `pop`, `rock`, `rap`, `jazz`
     type: string
     required: false
   playlistArtistParams:
@@ -535,3 +309,9 @@ parameters:
     description: valid values e.g 'm', 'f', 'mixed'
     required: false
     type: string
+  includeBodyParams:
+    name: include_body
+    in: query
+    description: Return play_queue body in response
+    type: boolean
+    required: false
