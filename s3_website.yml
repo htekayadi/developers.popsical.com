@@ -20,3 +20,4 @@ exclude_from_upload:
   - Rakefile
   - .gitignore
   - .git
+  - .DS_Store
