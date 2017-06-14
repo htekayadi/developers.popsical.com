@@ -141,6 +141,9 @@ paths:
       tags:
         - Genre
         - Meta
+      security:
+        - OauthSecurity:
+          - public
       parameters:
         - $ref: '#/parameters/playlistLangParams'
       responses:

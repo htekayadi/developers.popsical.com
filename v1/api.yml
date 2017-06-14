@@ -489,7 +489,7 @@ paths:
           - public
       responses:
         200:
-          description: Artits with playlist & meta pagination information
+          description: Artists with playlist & meta pagination information
           schema:
             type: object
             properties:
