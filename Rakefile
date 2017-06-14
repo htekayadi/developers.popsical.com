@@ -19,11 +19,11 @@ task :cp do
   `cp v2/api.json dist_latest/v2/api.json`
 end
 
+desc "build static assets"
+task build: [:gen, :cp]
+
 desc "deploy to s3"
 task :publish do
   puts "deploying to s3 ..."
   system 's3_website push --force'
 end
-
-desc "build static assets"
-task build: [:gen, :cp, :publish]

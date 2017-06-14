@@ -6,20 +6,17 @@ http://developers.popsical.com
 
 ## Developers
 
-Edit api.yml to add/update endpoint specification.
+Edit v1/api.yml, v2/api.yml to add/update endpoint specification.
 
 ## Setup
 
 `bundle install`
 
-## Steps to deploy
 
-1. Edit `v1/api.yml`. Use swagger 2.0 yaml syntax
+## Usage
 
-2. Generate json `api.json` with `rake build`.
+1. Edit `v1/api.yml` or `v2/api.yml`. Use swagger 2.0 yaml syntax
 
-3. Upload `api.json` to s3 developers.popsical.com
+2. `rake build` - this will generate v1/api.json and v2/api.json
 
-# TODO
-
-rake task for actual deployment to s3 bucket
+3. `rake publish` - deploy to s3 bucket
