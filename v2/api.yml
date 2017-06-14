@@ -4,12 +4,12 @@ info:
   version: "2"
 
   description: |
-    Version 1
+    Version 2
     --
 
     all endpoints path must be prefixed with `/v2`
 
-    e.g https://api.popsical.tv/v1/genres.json
+    e.g https://api.popsical.tv/v2/genres.json
 
     Authentication
     --------------
