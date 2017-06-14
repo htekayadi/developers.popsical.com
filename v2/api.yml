@@ -163,7 +163,7 @@ definitions:
   Genre:
     type: object
     properties:
-      name:
+      key:
         type: string
         description: genre name
         example: rock
@@ -174,7 +174,7 @@ definitions:
       icon_url:
         type: string
         example: https://charaku.imgix.net/defaults/genre_icons/ic_rock.png?auto=compress
-      genre_langs:
+      name:
         type: object
         properties:
           en:
