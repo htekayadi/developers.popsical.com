@@ -1557,12 +1557,14 @@ paths:
           examples:
             application/json:
               {
-                  "play_queue_id": play-queue-id,
-                  "access_token": token,
-                  "expires_at": timestamp,
-                  "scope": "public remote_mode",
-                  "tv_ip_address": "192.168.1.1",
-                  "tv_port": 8080
+                "access_token": "token",
+                "refresh_token": "token",
+                "expires_in": 14400,
+                "scope": "public remote_mode",
+                "play_queue_id": 1,
+                "tv_uid": "tv_uid"
+                "tv_ip_address": "192.168.1.1",
+                "tv_port": 8080
               }
         401:
           description: Not Authorize
@@ -1924,6 +1926,10 @@ definitions:
     allOf:
       - $ref: '#/definitions/AccessToken'
       - properties:
+          play_queue_id:
+            type: integer
+          tv_uid:
+            type: string
           tv_ip_address:
             type: string
           tv_port:
