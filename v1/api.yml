@@ -1562,7 +1562,7 @@ paths:
                 "expires_in": 14400,
                 "scope": "public remote_mode",
                 "play_queue_id": 1,
-                "tv_uid": "tv_uid"
+                "tv_uid": "tv_uid",
                 "tv_ip_address": "192.168.1.1",
                 "tv_port": 8080
               }
