@@ -1585,19 +1585,35 @@ paths:
           - public
       responses:
         200:
-          description: array of devices
+          description: device information
           schema:
-            type: array
-            items:
-              type: object
-              properties:
-                device_id:
-                  type: string
-                name:
-                  type: string
-          examples:
-            application/json:
-              [{"device_id": "device-id", "name": "device-name"}]
+            type: object
+            properties:
+              tv_device:
+                type: object
+                properties:
+                  device_id:
+                    type: string
+                    example: 734b7f315b2952f8
+                  ip_address:
+                    type: string
+                    example: 10.0.0.126
+
+              devices:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    device_id:
+                      type: string
+                      example: 7e3e043607dcd148
+                    name:
+                      type: string
+                      example: 5c9774bc
+        404:
+          description: Device not found
+          schema:
+            $ref: '#/definitions/ErrorNotFound'
 
   /genres.json:
     get:
