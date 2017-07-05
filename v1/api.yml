@@ -1585,7 +1585,7 @@ paths:
           - public
       responses:
         200:
-          description: device information
+          description: Device information
           schema:
             type: object
             properties:
@@ -1612,10 +1612,19 @@ paths:
                     name:
                       type: string
                       example: 5c9774bc
-        404:
+        422:
           description: Device not found
           schema:
-            $ref: '#/definitions/ErrorNotFound'
+            type: object
+            properties:
+              errors:
+                type: string
+                description: Device not found
+                example: device not found
+              err_code:
+                type: integer
+                description: refer to internal error codes
+                example: 1404
 
   /genres.json:
     get:
