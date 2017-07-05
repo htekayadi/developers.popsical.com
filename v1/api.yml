@@ -1598,7 +1598,9 @@ paths:
                   ip_address:
                     type: string
                     example: 10.0.0.126
-
+                  port:
+                    type: string
+                    example: 8080
               devices:
                 type: array
                 items:
