@@ -1599,7 +1599,7 @@ paths:
                     type: string
                     example: 10.0.0.126
                   port:
-                    type: string
+                    type: integer
                     example: 8080
               devices:
                 type: array
