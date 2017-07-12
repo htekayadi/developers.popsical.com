@@ -1640,9 +1640,11 @@ paths:
         {
          "pop":{
             "name":{
-               "en":"Pop",
-               "zh":"流行",
-               "zt":"流行"
+              "en":"Pop",
+              "zh":"流行",
+              "zt":"流行",
+              "ho":"流行",
+              "yue":"流行"
             },
             "position":0,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/pop.jpg?auto=compress",
@@ -1650,9 +1652,11 @@ paths:
          },
          "rock":{
             "name":{
-               "en":"Rock",
-               "zh":"摇滚",
-               "zt":"搖滾"
+              "en":"Rock",
+              "zh":"摇滚",
+              "zt":"搖滾",
+              "ho":"搖滾",
+              "yue":"搖滾"
             },
             "position":1,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/rock.jpg?auto=compress",
@@ -1660,9 +1664,11 @@ paths:
          },
          "r\u0026b":{
             "name":{
-               "en":"R\u0026B",
-               "zh":"节奏蓝调",
-               "zt":"節奏藍調"
+              "en":"R\u0026B",
+              "zh":"节奏蓝调",
+              "zt":"節奏藍調",
+              "ho":"節奏藍調",
+              "yue":"節奏藍調"
             },
             "position":2,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/R_B.jpg?auto=compress",
@@ -1670,9 +1676,11 @@ paths:
          },
          "country":{
             "name":{
-               "en":"Country",
-               "zh":"乡村",
-               "zt":"鄉村"
+              "en":"Country",
+              "zh":"乡村",
+              "zt":"鄉村",
+              "ho":"鄉村",
+              "yue":"鄉村"
             },
             "position":3,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/country.jpg?auto=compress",
@@ -1680,9 +1688,11 @@ paths:
          },
          "rap":{
             "name":{
-               "en":"Rap",
-               "zh":"嘻哈",
-               "zt":"嘻哈"
+              "en":"Rap",
+              "zh":"嘻哈",
+              "zt":"嘻哈",
+              "ho":"嘻哈",
+              "yue":"嘻哈"
             },
             "position":4,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/rap.jpg?auto=compress",
@@ -1690,9 +1700,11 @@ paths:
          },
          "jazz":{
             "name":{
-               "en":"Jazz",
-               "zh":"爵士乐",
-               "zt":"爵士樂"
+              "en":"Jazz",
+              "zh":"爵士乐",
+              "zt":"爵士樂",
+              "ho":"爵士樂",
+              "yue":"爵士樂"
             },
             "position":5,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/jazz.jpg?auto=compress",
@@ -1700,9 +1712,11 @@ paths:
          },
          "edm":{
             "name":{
-               "en":"EDM",
-               "zh":"电子舞曲",
-               "zt":"電子舞曲"
+              "en":"EDM",
+              "zh":"电子舞曲",
+              "zt":"電子舞曲",
+              "ho":"電子舞曲",
+              "yue":"電子舞曲"
             },
             "position":6,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/edm.jpg?auto=compress",
@@ -1710,9 +1724,11 @@ paths:
          },
          "acoustic":{
             "name":{
-               "en":"Acoustic",
-               "zh":"原音乐",
-               "zt":"原音樂"
+              "en":"Acoustic",
+              "zh":"原音乐",
+              "zt":"原音樂",
+              "ho":"原音樂",
+              "yue":"原音樂"
             },
             "position":7,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/acoustic.jpg?auto=compress",
@@ -1720,9 +1736,11 @@ paths:
          },
          "soundtrack":{
             "name":{
-               "en":"Soundtrack",
-               "zh":"影视配乐",
-               "zt":"影視配樂"
+              "en":"Soundtrack",
+              "zh":"影视配乐",
+              "zt":"影視配樂",
+              "ho":"影視配樂",
+              "yue":"影視配樂"
             },
             "position":8,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/soundtrack.jpg?auto=compress",
@@ -1730,9 +1748,11 @@ paths:
          },
          "indie":{
             "name":{
-               "en":"Indie",
-               "zh":"独立小品",
-               "zt":"獨立小品"
+              "en":"Indie",
+              "zh":"独立小品",
+              "zt":"獨立小品",
+              "ho":"獨立小品",
+              "yue":"獨立小品"
             },
             "position":9,
             "poster_url":"https://charaku.imgix.net/defaults/genre_bg/indie.jpg?auto=compress",
