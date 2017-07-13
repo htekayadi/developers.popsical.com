@@ -97,6 +97,14 @@ info:
 
     1413 - TV Device ID is missing
 
+    1414 - Country access blocked
+
+    1415 - Platform access blocked
+
+    1416 - Premium access blocked
+
+    1417 - Term has expired
+
     1500 - Internal server error
 
     Search
