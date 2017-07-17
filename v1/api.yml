@@ -1304,11 +1304,16 @@ paths:
               { "success": "ok"}
         422:
           description: |
-            Duplicate track already exist in play queue.
-            Use force_add=true in query paramters to add anyway.
+            - Duplicate track already exist in play queue. Use force_add=true in query paramters to add anyway.
+            - Adding track is blocked for reason.
+              * 1414 - Country access blocked
+              * 1415 - Platform access blocked
+              * 1416 - Premium access blocked
+              * 1417 - Term has expired
           examples:
             application/json:
               { "errors": "Track already exist! Use 'force_add=true' to add anyway", "err_code": 1412 }
+
     patch:
       summary: Update position of tracks in play queue
       description: Bulk update position of tracks in play queue
@@ -1421,6 +1426,16 @@ paths:
           examples:
             application/json:
               { "success": "ok"}
+        422:
+          description: |
+            Adding track is blocked for reason.
+            * 1414 - Country access blocked
+            * 1415 - Platform access blocked
+            * 1416 - Premium access blocked
+            * 1417 - Term has expired
+          examples:
+            application/json:
+              { "errors": "Country access blocked", "err_code": 1414 }
 
   /me/play_queue/set_next.json:
     patch:
