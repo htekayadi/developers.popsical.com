@@ -1425,7 +1425,7 @@ paths:
           description: returns ok
           examples:
             application/json:
-              { "success": "ok"}
+              { "success": "ok", "is_current": true}
         422:
           description: |
             Adding track is blocked for reason.
