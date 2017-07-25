@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  title: Popsical API
+  title: Popsical V1 API
   version: "1"
 
   description: |
