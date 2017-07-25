@@ -251,6 +251,7 @@ paths:
           examples:
             application/json:
               {"errors": "not_found", "err_code": 1404 }
+
   /videos/{video_id}/streams.json:
     get:
       summary: Get Video Url
@@ -266,7 +267,7 @@ paths:
           - public
       responses:
         200:
-          description: Playlist with tracks objects that can be paginated
+          description: Video Stream URL
           schema:
             schema:
             $ref: '#/definitions/Stream'
@@ -277,6 +278,7 @@ paths:
           examples:
             application/json:
               {"errors": "not_found", "err_code": 1404 }
+
   /genres.json:
     get:
       summary: Lookup available genres
