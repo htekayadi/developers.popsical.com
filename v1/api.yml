@@ -1305,6 +1305,7 @@ paths:
         422:
           description: |
             - Duplicate track already exist in play queue. Use force_add=true in query paramters to add anyway.
+              * 1412 - Track already exist! Use 'force_add=true' to add anyway
             - Adding track is blocked for reason.
               * 1414 - Country access blocked
               * 1415 - Platform access blocked
