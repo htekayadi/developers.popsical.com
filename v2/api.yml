@@ -210,6 +210,46 @@ paths:
                   $ref: '#/definitions/Playlist'
               meta:
                 $ref: '#/definitions/Pagination'
+  /lists/history.json:
+    get:
+      summary: Get User's History Playlist with Tracks
+      parameters:
+       - name: id
+         in: path
+         required: true
+         type: integer
+       - name: per_page
+         in: query
+         description: Number of tracks returned
+         type: integer
+       - name: page
+         in: query
+         description: Page number
+         type: integer
+      tags:
+        - Playlist
+      security:
+        - OauthSecurity:
+          - public
+      responses:
+        200:
+          description: Playlist with tracks objects that can be paginated
+          schema:
+            type: object
+            properties:
+              tracks:
+                type: array
+                items:
+                  $ref: '#/definitions/Track'
+              meta:
+                $ref: '#/definitions/Pagination'
+        404:
+          description: Not found
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              {"errors": "not_found", "err_code": 1404 }
 
   /playlists.json:
     get:
