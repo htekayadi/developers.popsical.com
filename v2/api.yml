@@ -133,6 +133,54 @@ consumes:
   - application/json
 
 paths:
+  /tracks.json:
+    get:
+      summary: Get Tracks
+      description: |
+        Fetch array of track objects
+      tags:
+        - Track
+      parameters:
+        - $ref: '#/parameters/perPageParams'
+        - $ref: '#/parameters/pageParams'
+        - $ref: '#/parameters/playlistGenreParams'
+      security:
+        - OauthSecurity:
+          - public
+      responses:
+        200:
+          description: Object with tracks array & meta pagination information
+          schema:
+            type: object
+            properties:
+              tracks:
+                type: array
+                items:
+                  $ref: '#/definitions/Track'
+              meta:
+                $ref: '#/definitions/Pagination'
+
+  /tracks/{id}.json:
+    get:
+      summary: Get Track Object
+      description: |
+        Fetch track object
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      tags:
+        - Track
+      security:
+        - OauthSecurity:
+          - public
+      responses:
+        200:
+          description: Object with tracks array & meta pagination information
+          schema:
+            $ref: '#/definitions/Track'
+
   /lists/popular.json:
     get:
       summary: Get Popular Playlists
