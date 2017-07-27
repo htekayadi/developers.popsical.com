@@ -300,6 +300,56 @@ paths:
             application/json:
               {"errors": "not_found", "err_code": 1404 }
 
+  /play_times.json:
+    post:
+      summary: Add play time record
+      description: |
+        Store play time record
+      tags:
+        - PlayTime
+      parameters:
+        - name: body
+          in: body
+          description: Body parameter in JSON format
+          required: true
+          schema:
+            $ref: '#/definitions/PlayTimePost'
+      security:
+        - OauthSecurity:
+          - manage
+      responses:
+        200:
+          description: TV device play time information
+          schema:
+            $ref: '#/definitions/PlayTime'
+
+  /play_times/{device_uid}.json:
+    get:
+      summary: Fetch TV device play time
+      parameters:
+       - name: device_uid
+         description: TV device UID
+         in: path
+         required: true
+         type: string
+      tags:
+        - PlayTime
+      security:
+        - OauthSecurity:
+          - manage
+      responses:
+        200:
+          description: TV device play time information
+          schema:
+            $ref: '#/definitions/PlayTime'
+        422:
+          description: Not found
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              {"errors": "not_found", "err_code": 1404 }
+
   /videos/{video_id}/streams.json:
     get:
       summary: Get Video Url
@@ -718,6 +768,39 @@ definitions:
           per_page:
             type: integer
             description: Number of items available per page
+
+  PlayTime:
+    type: object
+    properties:
+      time_remaining:
+        type: integer
+        example: 1790
+      device_uid:
+        type: string
+        example: 87b103e49c7f7d03
+      created_at:
+        type: string
+        format: date-time
+        example: '2017-07-27T08:03:57Z'
+
+  PlayTimePost:
+    type: object
+    properties:
+      play_time:
+        type: object
+        properties:
+          device_uid:
+            type: string
+            example: 87b103e49c7f7d03
+          play_duration:
+            type: integer
+            example: 10
+          track_id:
+            type: integer
+            example: 1
+          track_runtime:
+            type: integer
+            example: 100
 
   PlayQueueObj:
     type: object
