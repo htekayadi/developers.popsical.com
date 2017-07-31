@@ -1410,17 +1410,17 @@ paths:
       tags:
         - PlayQueue
       security:
-          - OauthSecurity:
-            - manage
+        - OauthSecurity:
+          - manage
       parameters:
-          - name: body
-            in: body
-            schema:
-              type: object
-              properties:
-                track_id:
-                  type: integer
-                  example: 1
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              track_id:
+                type: integer
+                example: 1
       responses:
         200:
           description: returns ok
@@ -1825,19 +1825,163 @@ paths:
           - remote_mode
       responses:
         200:
+          description: Object with status information
+          schema:
+            $ref: '#/definitions/SubscriptionObj'
+        401:
+          description: User unauthorized
+          schema:
+            $ref: '#/definitions/ErrorUnauthorized'
+
+  /subscriptions/card.json:
+    post:
+      summary: Send payment method information
+      description: |
+        Send payment method information
+      tags:
+        - Subscription
+      parameters:
+        - name: body
+          in: body
+          description: Body parameter in JSON format
+          required: true
+          schema:
+            type: object
+            properties:
+              first_name:
+                type: string
+                example: John
+              last_name:
+                type: string
+                example: Snow
+              number:
+                type: string
+                description: Card number
+                example: 4111111111111111
+              expiry_month:
+                type: integer
+                example: 10
+              expiry_year:
+                type: integer
+                example: 2022
+              cvv:
+                type: string
+                example: 999
+              country:
+                type: string
+                description: Country code
+                example: SG
+        - name: Authorization
+          in: header
+          description: |
+            Provide access_token with manage scope
+          type: string
+          required: true
+          format: string
+      responses:
+        200:
           description: Object with subscription status information
           schema:
             type: object
             properties:
-              status:
+              success:
                 type: string
-                example: "Active"
-              plan:
+                example: "ok"
+        401:
+          description: User unauthorized
+          schema:
+            $ref: '#/definitions/ErrorUnauthorized'
+
+  /subscriptions/plan/checkout.json:
+    post:
+      summary: Subscribe to Premium plan and charge payment
+      description: |
+        Subscribe to Premium plan and charge payment
+      tags:
+        - Subscription
+      parameters:
+        - name: body
+          in: body
+          description: Body parameter in JSON format
+          required: true
+          schema:
+            type: object
+            properties:
+              plan_id:
                 type: string
-                example: "Popsical Premium"
-              premium:
-                type: boolean
-                example: true
+                example: popsical-premium
+              first_name:
+                type: string
+                example: John
+              last_name:
+                type: string
+                example: Snow
+              line1:
+                type: string
+                description: Address Line 1
+                example: Yishun New Town
+              city:
+                type: string
+                example: Singapore
+              zip:
+                type: string
+                example: 760743
+              state:
+                type: string
+                example: Singapore
+              phone:
+                type: string
+                example: 70744420
+              coupon_id:
+                type: string
+                example: popsical-24-hour
+        - name: Authorization
+          in: header
+          description: |
+            Provide access_token with manage scope
+          type: string
+          required: true
+          format: string
+      responses:
+        200:
+          description: Object with subscription status information
+          schema:
+            $ref: '#/definitions/SubscriptionObj'
+        401:
+          description: User unauthorized
+          schema:
+            $ref: '#/definitions/ErrorUnauthorized'
+
+  /subscriptions/addon/charge.json:
+    post:
+      summary: Charge payment for addon
+      description: |
+        Charge payment for addon
+      tags:
+        - Subscription
+      parameters:
+        - name: body
+          in: body
+          description: Body parameter in JSON format
+          required: true
+          schema:
+            type: object
+            properties:
+              addon_id:
+                type: string
+                example: popsical-24-hour
+        - name: Authorization
+          in: header
+          description: |
+            Provide access_token with manage scope
+          type: string
+          required: true
+          format: string
+      responses:
+        200:
+          description: Object with subscription status information
+          schema:
+            $ref: '#/definitions/SubscriptionObj'
         401:
           description: User unauthorized
           schema:
@@ -2302,6 +2446,22 @@ definitions:
           profile_pic:
             type: string
             description: url of image
+
+  SubscriptionObj:
+    type: object
+    properties:
+      subscription_id:
+        type: string
+        example: Hr550zgQQlNsUCH2f
+      status:
+        type: string
+        example: "Active"
+      plan:
+        type: string
+        example: "Popsical Premium"
+      premium:
+        type: boolean
+        example: true
 
   PrevPlayQueueObj:
     type: object
