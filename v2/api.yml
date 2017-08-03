@@ -212,12 +212,8 @@ paths:
                 $ref: '#/definitions/Pagination'
   /lists/history.json:
     get:
-      summary: Get User's History Playlist with Tracks
+      summary: Get User's History Playlist with Tracks. The tracks object has playlist_track_id to support track removal from playlist
       parameters:
-       - name: id
-         in: path
-         required: true
-         type: integer
        - name: per_page
          in: query
          description: Number of tracks returned
@@ -240,7 +236,7 @@ paths:
               tracks:
                 type: array
                 items:
-                  $ref: '#/definitions/Track'
+                  $ref: '#/definitions/TrackWithPlaylistTrackID'
               meta:
                 $ref: '#/definitions/Pagination'
         404:
@@ -407,7 +403,6 @@ paths:
         200:
           description: Video Stream URL
           schema:
-            schema:
             $ref: '#/definitions/Stream'
         404:
           description: Not found
@@ -638,6 +633,65 @@ definitions:
         type: string
         format: date-time
         description: timestamp of last updated in iso8601 timestamp format
+      playlist_type:
+        type: integer
+        description: |
+          Playlist type
+          ---
+          | 0 - Non-descript
+          | 1 - User's Personal Playlist
+          | 2 - User's History Playlist
+          | 3 - Content Editor Curated Playlist
+          | 4 - Automated Curated Playlist
+
+  TrackWithPlaylistTrackID:
+    type: object
+    properties:
+      playlist_track_id:
+        type: integer
+        description: To support removal of track from playlist
+      id:
+        type: integer
+      number:
+        type: integer
+        description: track number in the album (if available)
+      title:
+        type: string
+        description: track title
+      alt_title:
+        type: string
+        description: alternate title, used for search index
+      lang_code:
+        type: string
+        description: language code of the track e.g en
+      runtime:
+        type: integer
+        description: duration in seconds
+      release_date:
+        type: string
+        format: date
+        description: track release date
+      has_video:
+        type: boolean
+        description: flag to indicate track has video
+      genres:
+        type: array
+        items:
+          type: string
+      source:
+        type: string
+        description: source of recording
+      images:
+        $ref: '#/definitions/Image'
+      video:
+        $ref: '#/definitions/Video'
+      artists:
+        type: array
+        items:
+          $ref: '#/definitions/Artist'
+      block:
+        type: boolean
+        description: true indicates track video can't be viewed due to Rules
   Track:
     type: object
     properties:
@@ -710,9 +764,6 @@ definitions:
         description: a flag to indicate whether video has encoded stream
       images:
         $ref: '#/definitions/Image'
-      url:
-        type: string
-        description: client must execute GET on this url to get a limited expiry timed url
 
   Stream:
     type: object
@@ -724,7 +775,7 @@ definitions:
         properties:
           video_id:
             type: integer
-            description: video-id
+            description: video id
           p720:
             type: string
             description: mpeg-dash url of the stream
