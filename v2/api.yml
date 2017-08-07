@@ -1024,6 +1024,7 @@ definitions:
     properties:
       time_remaining:
         type: integer
+        description: value in second
         example: 1790
       device_uid:
         type: string
@@ -1044,12 +1045,14 @@ definitions:
             example: 87b103e49c7f7d03
           play_duration:
             type: integer
+            description: value in second
             example: 10
           track_id:
             type: integer
             example: 1
           track_runtime:
             type: integer
+            description: value in second
             example: 100
 
   PlayQueueObj:
