@@ -97,6 +97,16 @@ info:
 
     1413 - TV Device ID is missing
 
+    1414 - Country access blocked
+
+    1415 - Platform access blocked
+
+    1416 - Premium access blocked
+
+    1417 - Term has expired
+
+    1418 - Exceeding free daily time
+
     1500 - Internal server error
 
     Search
@@ -392,6 +402,88 @@ paths:
           examples:
             application/json:
               {"errors": "not_found", "err_code": 1404 }
+
+  /me/play_queue/tracks.json:
+    post:
+      summary: Add track(s) to the play queue
+      description: |
+        Add tracks to play queue
+      security:
+        - OauthSecurity:
+          - manage
+      tags:
+        - PlayQueue
+      parameters:
+        - name: force_add
+          in: query
+          required: false
+          type: boolean
+          description: Set to true to force add track into play queue
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              device_uid:
+                type: object
+                example: cce43aa5c1924c20
+              queue:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    track_id:
+                      type: integer
+      responses:
+        200:
+          description: returns ok
+          examples:
+            application/json:
+              { "success": "ok"}
+        422:
+          description: |
+            - Duplicate track already exist in play queue. Use force_add=true in query paramters to add anyway.
+              * 1412 - Track already exist! Use 'force_add=true' to add anyway
+            - Adding track is blocked because of exceeding free daily time (for basic subscription plan).
+              * 1418 - Exceeding free daily time
+          examples:
+            application/json:
+              { "errors": "Track already exist! Use 'force_add=true' to add anyway", "err_code": 1412 }
+
+  /me/play_queue/add_next.json:
+    post:
+      summary: Add track to the next position of current track
+      tags:
+        - PlayQueue
+      security:
+        - OauthSecurity:
+          - manage
+      parameters:
+        - name: body
+          in: body
+          schema:
+            type: object
+            properties:
+              device_uid:
+                type: object
+                example: cce43aa5c1924c20
+              track_id:
+                type: integer
+                example: 1
+      responses:
+        200:
+          description: returns ok
+          examples:
+            application/json:
+              { "success": "ok", "is_current": true}
+        422:
+          description: |
+            Adding track is blocked because of exceeding free daily time (for basic subscription plan).
+            * 1418 - Exceeding free daily time
+          examples:
+            application/json:
+              { "errors": "Exceeding free daily time", "err_code": 1418 }
 
   /videos/{video_id}/streams.json:
     get:
@@ -758,6 +850,7 @@ definitions:
       block:
         type: boolean
         description: true indicates track video can't be viewed due to Rules
+
   Track:
     type: object
     properties:
