@@ -632,6 +632,9 @@ definitions:
       profile_id:
         type: integer
         description: profile_id 0 means internal generated id
+      name:
+        type: string
+        description: name of playlist
       created_at:
         type: string
         format: date-time
@@ -667,6 +670,8 @@ definitions:
         type: string
         format: date-time
         description: timestamp of last updated in iso8601 timestamp format
+      images:
+        $ref: '#/definitions/Image'
       playlist_type:
         type: integer
       tracks:
@@ -684,6 +689,9 @@ definitions:
       profile_id:
         type: integer
         description: profile_id 0 means internal generated id
+      name:
+        type: string
+        description: Name of playlist
       created_at:
         type: string
         format: date-time
@@ -692,6 +700,8 @@ definitions:
         type: string
         format: date-time
         description: timestamp of last updated in iso8601 timestamp format
+      images:
+        $ref: '#/definitions/Image'
       playlist_type:
         type: integer
       tracks:
