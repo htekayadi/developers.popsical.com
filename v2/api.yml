@@ -231,14 +231,7 @@ paths:
         200:
           description: Playlist with tracks objects that can be paginated
           schema:
-            type: object
-            properties:
-              tracks:
-                type: array
-                items:
-                  $ref: '#/definitions/TrackWithPlaylistTrackID'
-              meta:
-                $ref: '#/definitions/Pagination'
+            $ref: '#/definitions/PlaylistPersonalTracks'
         404:
           description: Not found
           schema:
@@ -246,6 +239,27 @@ paths:
           examples:
             application/json:
               {"errors": "not_found", "err_code": 1404 }
+  /playlist_tracks/{id}.json:
+    delete:
+      summary: Remove Track from Playlist
+      description: |
+        Remove Tracks from Playlist.
+      security:
+        - OauthSecurity:
+          - manage
+          - remote_mode
+      tags:
+        - Playlist
+      parameters:
+        - name: id
+          in: path
+          description: ID is playlist_track_id
+      responses:
+        200:
+          description: returns ok
+          examples:
+            application/json:
+              { "success": "ok"}
 
   /playlists.json:
     get:
@@ -320,14 +334,7 @@ paths:
         200:
           description: Playlist with tracks objects that can be paginated
           schema:
-            type: object
-            properties:
-              tracks:
-                type: array
-                items:
-                  $ref: '#/definitions/Track'
-              meta:
-                $ref: '#/definitions/Pagination'
+            $ref: '#/definitions/PlaylistWithTracks'
         404:
           description: Not found
           schema:
@@ -643,7 +650,56 @@ definitions:
           | 2 - User's History Playlist
           | 3 - Content Editor Curated Playlist
           | 4 - Automated Curated Playlist
-
+  PlaylistWithTracks:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: identifier of playlist. Use this id to fetch playlist object
+      profile_id:
+        type: integer
+        description: profile_id 0 means internal generated id
+      created_at:
+        type: string
+        format: date-time
+        description: timestamp of creation in iso8601 timestamp format
+      updated_at:
+        type: string
+        format: date-time
+        description: timestamp of last updated in iso8601 timestamp format
+      playlist_type:
+        type: integer
+      tracks:
+        type: array
+        items:
+          $ref: '#/definitions/Track'
+      meta:
+        $ref: '#/definitions/Pagination'
+  PlaylistPersonalTracks:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: identifier of playlist. Use this id to fetch playlist object
+      profile_id:
+        type: integer
+        description: profile_id 0 means internal generated id
+      created_at:
+        type: string
+        format: date-time
+        description: timestamp of creation in iso8601 timestamp format
+      updated_at:
+        type: string
+        format: date-time
+        description: timestamp of last updated in iso8601 timestamp format
+      playlist_type:
+        type: integer
+      tracks:
+        type: array
+        items:
+          $ref: '#/definitions/TrackWithPlaylistTrackID'
+      meta:
+        $ref: '#/definitions/Pagination'
   TrackWithPlaylistTrackID:
     type: object
     properties:
