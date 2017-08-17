@@ -191,6 +191,28 @@ paths:
           schema:
             $ref: '#/definitions/Track'
 
+  /tracks/lyrics/{id}.json:
+    get:
+      summary: Get Track Lyric Object
+      description: |
+        Fetch track lyric object
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: track id
+      tags:
+        - Track Lyric
+      security:
+        - OauthSecurity:
+          - public
+      responses:
+        200:
+          description: Object with tracks lyric information
+          schema:
+            $ref: '#/definitions/TrackLyric'
+
   /lists/popular.json:
     get:
       summary: Get Popular Playlists
@@ -896,6 +918,29 @@ definitions:
       block:
         type: boolean
         description: true indicates track video can't be viewed due to Rules
+
+  TrackLyric:
+    type: object
+    properties:
+      track_id:
+        type: integer
+        example: 130070
+      is_original:
+        type: boolean
+        description: flag to indicate lyric in original language
+        exmaple: true
+      lang_code:
+        type: string
+        description: language code
+        example: en
+      lines:
+        type: array
+        description: line of lyrics
+        items:
+          type: string
+          description: lyric line
+          example: Lyric line 1
+
 
   Image:
     type: object
