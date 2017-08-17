@@ -939,7 +939,7 @@ definitions:
         items:
           type: string
           description: lyric line
-          example: Lyric line 1
+          example: ["I’ve been hearin' symphonies", "Before, all I heard was silence", "A rhapsody for you and me", "And every melody is timeless"]
 
 
   Image:
