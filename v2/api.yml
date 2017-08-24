@@ -1052,6 +1052,9 @@ definitions:
       name:
         type: string
         example: Eminem
+      alt_name:
+        type: string
+        example: Eminem
       gender:
         type: string
         example: m
