@@ -271,6 +271,59 @@ paths:
           examples:
             application/json:
               {"errors": "not_found", "err_code": 1404 }
+
+  /notifications.json:
+    post:
+      summary:  Trigger notification service to send payload
+      description: |
+        Trigger notification service to send payload
+      tags:
+        - Notification
+      parameters:
+        - name: body
+          in: body
+          description: Body parameter in JSON format
+          required: true
+          schema:
+            type: object
+            properties:
+              payload:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: add_play_queue_track
+                  uuid:
+                    type: string
+                    example: cfc61baa-86e8-11e7-bb31-be2e44b06b34
+                  created_at:
+                    type: integer
+                    description: seconds value since Epoch
+                    example: 1503371978
+              device_id:
+                type: string
+                example: "aae73aa5c1964c60"
+              user_id:
+                type: integer
+                example: 23
+
+      security:
+        - OauthSecurity:
+          - public
+      responses:
+        200:
+          description: Push notification information
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              id:
+                type: string
+                description: Push Notification ID
+                example: 599e4a67792700280d9dc864
+
   /playlist_tracks/{id}.json:
     delete:
       summary: Remove Track from Playlist
