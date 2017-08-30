@@ -1082,14 +1082,21 @@ definitions:
     properties:
       id:
         type: integer
+        example: 128276
       artist_id:
         type: integer
+        example: 27186
       title:
         type: string
         description: video title
+        example: Symphony
       has_stream:
         type: boolean
         description: a flag to indicate whether video has encoded stream
+        example: true
+      vocal_channel:
+        type: string
+        example: left
       images:
         $ref: '#/definitions/Image'
 
