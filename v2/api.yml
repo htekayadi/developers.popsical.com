@@ -810,8 +810,12 @@ definitions:
     properties:
       key:
         type: string
-        description: genre name
+        description: genre key
         example: rock
+      name:
+        type: string
+        description: genre name
+        example: Rock
       poster_url:
         type: string
         description: poster URL
@@ -819,21 +823,7 @@ definitions:
       icon_url:
         type: string
         example: https://charaku.imgix.net/defaults/genre_icons/ic_rock.png?auto=compress
-      name:
-        type: object
-        properties:
-          en:
-            type: string
-            description: genre lang code with genre name
-            example: Rock
-          zh:
-            type: string
-            description: genre lang code with genre name
-            example: 摇滚
-          zt:
-            type: string
-            description: genre lang code with genre name
-            example: 搖滾
+
   Device:
     type: object
     properties:
