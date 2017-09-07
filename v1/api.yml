@@ -2220,6 +2220,9 @@ definitions:
       mac_address:
         type: string
         example: f2:b7:2a:5d:bf:1d
+      ethernet_mac:
+        type: string
+        example: f2:b7:2a:5d:bf:1d
       port:
         type: integer
         example: 8080
