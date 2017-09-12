@@ -188,6 +188,8 @@ paths:
           in: path
           required: true
           type: integer
+          description: Artist ID
+        - $ref: '#/parameters/trackIncludesParams'
       tags:
         - Artist
       security:
@@ -219,10 +221,6 @@ paths:
               musixmatch_id:
                 type: integer
                 example: 1
-              playlists:
-                type: array
-                items:
-                  $ref: '#/definitions/Playlist'
 
   /tracks.json:
     get:
@@ -1365,6 +1363,12 @@ definitions:
 
 # define reusable parameters:
 parameters:
+  includeBodyParams:
+    name: include_body
+    in: query
+    description: Return play_queue body in response
+    type: boolean
+    required: false
   perPageParams:
     name: per_page
     in: query
@@ -1401,9 +1405,9 @@ parameters:
     description: valid values e.g 'm', 'f', 'mixed'
     required: false
     type: string
-  includeBodyParams:
-    name: include_body
+  trackIncludesParams:
+    name: includes
     in: query
-    description: Return play_queue body in response
-    type: boolean
+    description: Eager load tracks in each playlist. e.g `includes=tracks`
+    type: string
     required: false
