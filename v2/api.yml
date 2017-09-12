@@ -190,6 +190,8 @@ paths:
           type: integer
           description: Artist ID
         - $ref: '#/parameters/trackIncludesParams'
+        - $ref: '#/parameters/perPageParams'
+        - $ref: '#/parameters/pageParams'
       tags:
         - Artist
       security:
@@ -1372,7 +1374,7 @@ parameters:
   perPageParams:
     name: per_page
     in: query
-    description: Number of playlist returned
+    description: Number of resource returned
     type: integer
     required: false
   pageParams:
