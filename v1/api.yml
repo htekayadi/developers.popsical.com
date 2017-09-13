@@ -1788,7 +1788,6 @@ paths:
 
       tags:
         - Genre
-        - Meta
       responses:
         200:
           description: Object of genres available
