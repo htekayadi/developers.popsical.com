@@ -1133,6 +1133,10 @@ paths:
         [12] Video content is too sexual
 
         [13] Video content is incorrect
+
+        [14] Other feedback
+
+        [15] No lyrics
       tags:
         - Track Report
       security:
