@@ -272,6 +272,58 @@ paths:
           schema:
             $ref: '#/definitions/Track'
 
+  /tracks/{id}.json:
+    get:
+      summary: Get Track Object
+      description: |
+        Fetch track object
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      tags:
+        - Track
+      security:
+        - OauthSecurity:
+          - public
+      responses:
+        200:
+          description: Object with tracks array & meta pagination information
+          schema:
+            $ref: '#/definitions/Track'
+
+    patch:
+      summary: Patch Track Object
+      description: |
+        Patch track object
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - name: body
+          in: body
+          description: Body parameter in JSON format
+          required: true
+          schema:
+            type: object
+            properties:
+              runtime:
+                type: integer
+                description: Runtime value in second
+                example: 300
+      tags:
+        - Track
+      security:
+        - OauthSecurity:
+          - public manage
+      responses:
+        200:
+          description: Object with tracks array & meta pagination information
+          schema:
+            $ref: '#/definitions/Track'
+
   /tracks/lyrics/{id}.json:
     get:
       summary: Get Track Lyric Object
