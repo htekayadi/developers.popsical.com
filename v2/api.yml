@@ -296,12 +296,13 @@ paths:
     patch:
       summary: Patch Track Object
       description: |
-        Patch track object
+        OauthSecurity: public manage
       parameters:
         - name: id
           in: path
           required: true
           type: integer
+          description: Track ID
         - name: body
           in: body
           description: Body parameter in JSON format
@@ -320,9 +321,12 @@ paths:
           - public manage
       responses:
         200:
-          description: Object with tracks array & meta pagination information
-          schema:
-            $ref: '#/definitions/Track'
+          description: patch track successful
+          examples:
+            application/json:
+              {
+                "success": "ok"
+              }
 
   /tracks/lyrics/{id}.json:
     get:
