@@ -350,6 +350,78 @@ paths:
           schema:
             $ref: '#/definitions/TrackLyric'
 
+
+  /tracks/report.json:
+    post:
+      summary: Create Track Report
+      description: |
+        Reason example:
+
+        [1] Others
+
+        [2] No vocals
+
+        [3] No instrumentals
+
+        [4] No sound
+
+        [5] Bad lyric scroll
+
+        [6] No lyric scroll
+
+        [7] Corrupted video
+
+        [8] Wrong video to title
+
+        [9] Incorrect song title
+
+        [10] Too violent/sexual
+      tags:
+        - Track Report
+      security:
+        - OauthSecurity:
+          - public
+          - remote_mode
+      parameters:
+        - name: body
+          in: body
+          required: true
+          description: request body
+          schema:
+            type: object
+            properties:
+              track_id:
+                type: integer
+                example: 1
+              reason:
+                type: array
+                example: [1, 2, 3, 4]
+              device_uid:
+                type: string
+                example: b540e4fd7fcf00b1
+              device_type:
+                type: string
+                example: remote
+              correct_song_title:
+                type: string
+                example: Happy New Year
+              other_feedback:
+                type: string
+                example: Not the full video. Can only play 3/4 of original length
+      responses:
+        200:
+          description: Track Report created
+          examples:
+            application/json:
+              {"success": "ok"}
+        422:
+          description: Model validation error
+          schema:
+            $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              {"errors": "not_found", "err_code": 1407 }
+
   /lists/popular.json:
     get:
       summary: Get Popular Playlists
