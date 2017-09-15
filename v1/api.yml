@@ -264,6 +264,10 @@ paths:
           description: OAuth Access Token
           schema:
             $ref: '#/definitions/AccessToken'
+        401:
+          description: Not Authorize
+          schema:
+            $ref: '#/definitions/ErrorUnauthorized'
 
   /users.json:
     post:
