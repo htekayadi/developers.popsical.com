@@ -373,9 +373,7 @@ paths:
 
         [8] Wrong video to title
 
-        [9] Incorrect song title
-
-        [10] Too violent/sexual
+        [9] Too violent/sexual
       tags:
         - Track Report
       security:
