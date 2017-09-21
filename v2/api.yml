@@ -1536,6 +1536,6 @@ parameters:
   trackIncludesParams:
     name: includes
     in: query
-    description: Eager load tracks in each playlist. e.g `includes=tracks`
+    description: Eager load tracks in each playlist. e.g `includes=tracks,artists`
     type: string
     required: false
