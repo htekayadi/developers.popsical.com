@@ -459,10 +459,16 @@ paths:
       parameters:
         - $ref: '#/parameters/perPageParams'
         - $ref: '#/parameters/pageParams'
+        - name: artist_gender
+          in: query
+          description: Artist gender
+          type: string
+          required: false
       security:
         - OauthSecurity:
           - manage
           - remote_mode
+
       responses:
         200:
           description: Object with artists array & meta pagination information
