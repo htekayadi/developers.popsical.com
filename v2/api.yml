@@ -1113,6 +1113,8 @@ definitions:
         description: source of recording
       images:
         $ref: '#/definitions/Image'
+      lyrics_count:
+        type: integer
       video:
         $ref: '#/definitions/Video'
       artists:
@@ -1159,6 +1161,8 @@ definitions:
         description: source of recording
       images:
         $ref: '#/definitions/Image'
+      lyrics_count:
+        type: integer
       video:
         $ref: '#/definitions/Video'
       artists:
