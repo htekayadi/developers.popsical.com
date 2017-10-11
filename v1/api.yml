@@ -2312,6 +2312,8 @@ definitions:
         description: source of recording
       images:
         $ref: '#/definitions/Image'
+      lyrics_count:
+        type: integer
       musixmatch_id:
         type: integer
       musixmatch_lyrics_id:
