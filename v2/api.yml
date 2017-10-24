@@ -1182,17 +1182,21 @@ definitions:
       lines:
         type: array
         description: line of lyrics
-        items:
-          type: string
-          description: lyric line
-          example: ["ゴキゲンな蝶になって　きらめく風に乗って", "今すぐ　キミに会いに行こう", "", "何が　wow wow～", "この空に届くのだろう"]
+        example:
+          - ゴキゲンな蝶になって　きらめく風に乗って
+          - 今すぐ　キミに会いに行こう
+          - ""
+          - 何が　wow wow～
+          - この空に届くのだろう
       alt_lines:
         type: array
         description: alternative line of lyrics
-        items:
-          type: string
-          description: alternative lyric line
-          example: ["Gokigen na chou ni natte kirameku kaze ni notte", "Ima sugu kimi ni ai ni yukou", "", "Nani ga wow wow wow wow wow", "kono sora ni todoku no darou"]
+        example:
+          - Gokigen na chou ni natte kirameku kaze ni notte
+          - Ima sugu kimi ni ai ni yukou
+          - ""
+          - Nani ga wow wow wow wow wow
+          - Kono sora ni todoku no darou
       translations:
         type: array
         items:
@@ -1209,10 +1213,12 @@ definitions:
             lines:
               type: array
               description: line of lyrics
-              items:
-                type: string
-                description: lyric line
-                example: ["I'll become a happy butterfly and ride on the glittering wind", "I'll come to see you soon", "", "What do you mean, wow wow wow wow wow?", "I wonder if we'll reach the skies"]
+              example:
+                - I'll become a happy butterfly and ride on the glittering wind
+                - I'll come to see you soon
+                - ""
+                - What do you mean, wow wow wow wow wow?
+                - I wonder if we'll reach the skies
 
   Image:
     type: object
