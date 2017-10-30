@@ -531,6 +531,9 @@ paths:
               musixmatch_id:
                 type: integer
                 example: 1
+              total_tracks:
+                type: integer
+                example: 10
               playlists:
                 type: array
                 items:
@@ -2398,6 +2401,9 @@ definitions:
       musixmatch_id:
         type: integer
         example: 1
+      total_tracks:
+        type: integer
+        example: 10
 
   PlayQueue:
     type: object
