@@ -223,6 +223,9 @@ paths:
               musixmatch_id:
                 type: integer
                 example: 1
+              total_tracks:
+                type: integer
+                example: 10
 
   /tracks.json:
     get:
@@ -1301,6 +1304,9 @@ definitions:
       musixmatch_id:
         type: integer
         example: 1
+      total_tracks:
+        type: integer
+        example: 10
 
   PlayQueue:
     type: object
@@ -1436,21 +1442,18 @@ definitions:
   Pagination:
     type: object
     properties:
-      meta:
-        type: object
-        properties:
-          total:
-            type: integer
-            description: Total number of items
-          current_page:
-            type: integer
-            description: Current page
-          num_pages:
-            type: integer
-            description: Total of number of pages available to paginate
-          per_page:
-            type: integer
-            description: Number of items available per page
+      total:
+        type: integer
+        description: Total number of items
+      current_page:
+        type: integer
+        description: Current page
+      num_pages:
+        type: integer
+        description: Total of number of pages available to paginate
+      per_page:
+        type: integer
+        description: Number of items available per page
 
   Success:
     type: object
