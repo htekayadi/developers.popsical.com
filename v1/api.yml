@@ -154,6 +154,7 @@ paths:
         - name: client_id
           in: query
           required: true
+          description: URL parameter
           type: string
       responses:
         200:
@@ -170,6 +171,7 @@ paths:
         - name: body
           in: body
           required: true
+          description: ''
           schema:
             $ref: '#/definitions/AuthTokenPost'
       tags:
@@ -1568,20 +1570,25 @@ paths:
         - name: body
           in: body
           required: true
+          description: ''
           schema:
             type: object
             properties:
               short_code:
                 type: string
+                example: "120189"
               device_id:
                 type: string
                 description: your unique mobile device id
+                example: mobile-device-id
               device_name:
                 type: string
                 description: your mobile device name
+                example: mobile-device-type
               client_id:
                 type: string
                 description: OAuth client_id key
+                example: b0be862b68fbd575d9fe7e6f1c5e22747c2fc375ceb8auu6562a0f57f91ud576
         - name: Authorization
           in: header
           description: |
@@ -1595,18 +1602,6 @@ paths:
           description: custom access token with tv app ip_address & port
           schema:
             $ref: '#/definitions/AccessTokenTV'
-          examples:
-            application/json:
-              {
-                "access_token": "token",
-                "refresh_token": "token",
-                "expires_in": 14400,
-                "scope": "public remote_mode",
-                "play_queue_id": 1,
-                "tv_uid": "tv_uid",
-                "tv_ip_address": "192.168.1.1",
-                "tv_port": 8080
-              }
         401:
           description: Not Authorize
           schema:
@@ -2116,7 +2111,7 @@ definitions:
       client_id:
         type: string
         description: Your app oauth client id
-        example: 7eb7794c1eb43584b91cd81b507e4d2fd09ae75a69307c0ecc9c3f6a5a88c338
+        example: 7eb7794c1eb42584b91cd61b507e4d2fd09ae75a69207c0ecc8c3f6a5a88c338
   AuthTokenPostFB:
     type: object
     properties:
@@ -2159,12 +2154,16 @@ definitions:
       - properties:
           play_queue_id:
             type: integer
+            example: 1
           tv_uid:
             type: string
+            example: popsical-tv
           tv_ip_address:
             type: string
+            example: 192.168.2.1
           tv_port:
             type: integer
+            example: 8080
   User:
     type: object
     properties:
